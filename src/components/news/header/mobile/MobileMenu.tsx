@@ -27,7 +27,7 @@ export function MobileMenu({
           {
             navMenu.map((navItem) => {
               return (
-                <Button asChild variant={"ghost"} key={navItem.title}>
+                <Button asChild variant={"ghost"} key={navItem.title} aria-label={navItem.title}>
                   <Link href={mainRoute ? `${mainRoute}/${navItem.href}` : navItem.href}>
                     {navItem.title}
                   </Link>

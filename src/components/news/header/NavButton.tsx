@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function NavButton({ navLink , className}: { navLink: NewsnavLink , className?: string}) {
   return (
-    <Button asChild variant={"ghost"}>
+    <Button asChild variant={"ghost"} aria-label={navLink.href}>
       <Link href={navLink.href} className={className}>{navLink.title}</Link>
     </Button>
   );
