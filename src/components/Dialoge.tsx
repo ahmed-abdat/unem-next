@@ -15,7 +15,7 @@ export default function Dialoge({
 }) {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent className="w-full min-h-[60dvh] max-h-[90dvh] place-items-center pr-4">
+      <DialogContent className="w-full min-h-[60dvh] max-h-[90dvh] place-items-center border-none text-white bg-transparent md:text-black md:bg-white md:border pr-4">
         {children}
       </DialogContent>
     </Dialog>

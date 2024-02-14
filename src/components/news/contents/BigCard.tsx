@@ -35,7 +35,7 @@ export default function BigCards({
         >
           {card.title}
         </h3>
-        <p className="text-base text-muted-foreground font-medium font-rb mt-1">
+        <p className="text-base text-muted-foreground font-noto mt-1">
           {card.description.slice(0, 150)}
         </p>
       </div>

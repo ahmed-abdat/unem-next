@@ -20,6 +20,7 @@ const config = {
     extend: {
       fontFamily: {
         robo: ['var(--font-roboto)'],
+        noto : ['var(--font-noto)'],
         tajawal: ['var(--font-tajawal)'],
         rb : ['var(--font-rb)'],
         vazir: ['var(--font-vazir)'],
