@@ -22,6 +22,8 @@
     "clsx": "^2.1.0",
     "cmdk": "^0.2.1",
     "command": "^0.0.5",
+    "embla-carousel-autoplay": "^8.0.0-rc22",
+    "embla-carousel-react": "^8.0.0-rc22",
     "firebase": "^10.8.0",
     "lucide-react": "^0.330.0",
     "moment": "^2.30.1",

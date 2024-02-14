@@ -1,10 +1,6 @@
 import Image from "next/image";
 
-export default function FullImages({
-    src
-} : {
-    src : string
-}) {
+export default function FullImages({ src }: { src: string }) {
   return (
     <section className="w-full min-h-dvh h-full max-h-[120dvh] overflow-hidden relative">
       <Image
