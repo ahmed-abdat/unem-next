@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import {  Tajawal, Roboto , Noto_Naskh_Arabic } from "next/font/google";
+import {  Tajawal, Roboto } from "next/font/google";
 import { Toaster } from "sonner";
 import "./globals.css";
 
@@ -8,13 +8,6 @@ export const metadata: Metadata = {
   title: "الاتحاد الوطني لطلبة موريتانيا ",
   description: "Unem website",
 };
-
-const Noto = Noto_Naskh_Arabic({
-  weight: ["400", "500", "700"],
-  subsets: ["arabic"],
-  variable: "--font-noto",
-  fallback : ['system-ui', 'arial']
-});
 
 const RB = localFont({
   src: "./fonts/RB-Regular.ttf",
@@ -44,7 +37,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ar" dir="rtl">
-      <body className={`${RB.className} ${Noto.className} ${tajawal.className} ${roboto.className} bg-main`}>
+      <body className={`${RB.className} ${tajawal.className} ${roboto.className} bg-main`}>
         {children}
         <Toaster position="top-center" richColors />
       </body>
