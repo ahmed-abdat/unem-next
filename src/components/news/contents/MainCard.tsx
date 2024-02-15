@@ -99,7 +99,7 @@ function CardsConatainer() {
     if (inView && lastePoste && !isFetchingMore) {
       fetchMorePostes();
     }
-  }, [inView, isFetchingMore, lastePoste, postes]);
+  }, [inView , lastePoste]);
 
   const bigCardNumber = 4;
 
