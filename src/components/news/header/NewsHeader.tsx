@@ -47,7 +47,7 @@ export default function NewsHeader() {
         <Link href="/login">تسجيل الدخول</Link>
       </Button>
       <div className="flex items-center gap-x-4 lg:hidden">
-        <Link href="/login">
+        <Link href="/login" aria-label="login">
           <CircleUserRound className="w-8 h-8 cursor-pointer" />
         </Link>
         <MobileNav />

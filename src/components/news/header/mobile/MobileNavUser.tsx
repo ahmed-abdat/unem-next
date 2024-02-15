@@ -18,6 +18,7 @@ export default function MobileNavUser({
               href="/login"
               onClick={() => closeOnCurrent("/login")}
               className="-m-2 block p-2 font-medium text-white"
+              aria-label="login"
             >
               تسجيل الدخول
             </Link>
