@@ -14,8 +14,4 @@ export const navLinks: NewsnavLink[] = [
       title: "فضاء الطالب",
       href: "/student-space",
     },
-    {
-      title: "من نحن",
-      href: "/about",
-    },
   ]

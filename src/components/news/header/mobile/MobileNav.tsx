@@ -53,6 +53,11 @@ const MobileNav = () => {
       </button>
     );
 
+    const aboutLink =    {
+      title: "من نحن",
+      href: "/about",
+    }
+
   return (
     <div>
       <div className="relative z-40 lg:hidden">
@@ -96,6 +101,9 @@ const MobileNav = () => {
               <MobileMenu navMenu={newsMenuLinks} mainRoute="institutions">
                 مؤسسات التعليم العالي
               </MobileMenu>
+              </div>
+              <div className="flex items-center justify-center w-full my-4">
+              <NavButton navLink={aboutLink} className="w-[90%]" />
               </div>
               <MobileNavUser closeOnCurrent={closeOnCurrent} />
             </div>

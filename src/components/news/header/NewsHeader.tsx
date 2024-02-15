@@ -13,6 +13,11 @@ import Link from "next/link";
 import MobileNav from "@/components/news/header/mobile/MobileNav";
 
 export default function NewsHeader() {
+
+  const aboutLink =    {
+    title: "من نحن",
+    href: "/about",
+  }
   return (
     <header
       className={` max-h-[60px] h-full sticky z-50 top-0 flex items-center gap-4 w-full p-4 bg-white justify-between`}
@@ -38,6 +43,7 @@ export default function NewsHeader() {
         <NavigationMenue navMenu={newsMenuLinks} mainRoute="institutions">
           مؤسسات التعليم العالي
         </NavigationMenue>
+        <NavButton navLink={aboutLink} className="font-tajawal font-medium text-base" />
       </div>
       <Button
         className="font-rb py-5 hidden lg:flex"
