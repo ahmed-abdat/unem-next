@@ -1,7 +1,4 @@
-import {
-  Dialog,
-  DialogContent,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogClose } from "@/components/ui/dialog";
 import React from "react";
 
 export default function Dialoge({
@@ -15,7 +12,7 @@ export default function Dialoge({
 }) {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogContent className="w-full min-h-[60dvh] max-h-[90dvh] place-items-center border-none text-white bg-transparent md:text-black md:bg-white md:border pr-4">
+      <DialogContent className="w-full min-h-[60dvh] max-h-[90dvh] place-items-center border-none text-white bg-transparent sm:text-black sm:bg-white sm:border pr-4">
         {children}
       </DialogContent>
     </Dialog>

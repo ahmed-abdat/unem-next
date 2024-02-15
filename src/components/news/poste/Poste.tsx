@@ -10,7 +10,7 @@ import { DocumentData } from "firebase/firestore";
 import { toast } from "sonner";
 import Image from "next/image";
 import SharePoste from "./SharePoste";
-import PosteSkelton from "./PosteSkeleton";
+import PosteSkelton from "../../skelton/PosteSkeleton";
 import { Carousele } from "@/components/Caresol";
 import Dialoge from "@/components/Dialoge";
 // import PosteSkelton from "./PosteSkelton";
@@ -66,9 +66,9 @@ function Poste({ id }: { id: string }) {
           <Dialoge isOpen={isImageSelected} setIsOpen={setIsImageSelected}>
             <Carousele images={poste?.images} selectedImage={image}/>
           </Dialoge>
-          <section className="py-6 bg-white min-h-[85dvh] sm:py-[30px] sm:px-4 ">
+          <section className="pt-6 bg-white min-h-[85dvh] sm:py-[20px] sm:px-4 ">
             <div className=" md:max-w-[80dvw]">
-              <h1 className="font-rb text-2xl font-bold md:text-4xl p-5">
+              <h1 className="font-rb text-2xl font-bold md:text-4xl pb-2">
                 {poste?.title}
               </h1>
             </div>
@@ -94,7 +94,7 @@ function Poste({ id }: { id: string }) {
               </div>
               <SharePoste handelCopy={handelCopy} url={url} />
             </div>
-            <div className="p-3 leading-10 block font-noto text-[19px] text-gray-800 sm:min-w-[80dvw] lg:max-w-[60dvw]">
+            <div className="p-3 leading-10 block font-noto text-[19px] text-gray-800 sm:min-w-[80dvw] lg:max-w-[60dvw] md:max-w-[80dvw]">
               <p>{poste?.description}</p>
             </div>
             <div className="px-3 mt-4 grid grid-cols-mobile gap-[0.3rem] sm:grid-cols-tablet sm:gap-[0.4rem] lg:grid-cols-desktop w-full h-full">

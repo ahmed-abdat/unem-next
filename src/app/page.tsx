@@ -17,7 +17,7 @@ export default function Home() {
               width={144}
               height={144}
               alt="logo"
-              className="object-contain w-36 h-36"
+              className="object-contain rounded-md"
             />
           </div>
         </header>

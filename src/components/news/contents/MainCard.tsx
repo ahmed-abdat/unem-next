@@ -15,10 +15,11 @@ import { NewsPoste } from "@/types/news-poste";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { useRouter } from "next/navigation";
-import BigCardSkelton from "./BigCardSkelton";
+import BigCardSkelton from "../../skelton/BigCardSkelton";
 import BigCard from "./BigCard";
 import Card from "./Card";
-import CardSkeleton from "./CardSkeleton";
+import CardSkeleton from "../../skelton/CardSkeleton";
+import { Separator } from "@/components/ui/separator";
 
 function CardsConatainer() {
   const [isLoading, setIsLoading] = useState(true);
@@ -63,7 +64,7 @@ function CardsConatainer() {
       setIsLoading(false);
     }
   };
-  
+
   useEffect(() => {
     const fetchMorePostes = async () => {
       if (!lastePoste || postes.length < 10) return;
@@ -98,33 +99,53 @@ function CardsConatainer() {
     if (inView && lastePoste && !isFetchingMore) {
       fetchMorePostes();
     }
-  }, [inView , isFetchingMore , lastePoste , postes ]); 
-
- 
+  }, [inView, isFetchingMore, lastePoste, postes]);
 
   const bigCardNumber = 4;
 
   return (
-    <section className={"flex items-center gap-x-4 pt-14 flex-col bg-white"}>
-      {isLoading
-        ? 
-          <>
-          <BigCardSkelton count={bigCardNumber}/>
-          <CardSkeleton count={postes.length - bigCardNumber > 0 ? postes.length - bigCardNumber : 3}/>
-          </>
-        : <>
-        {postes.slice(0,bigCardNumber).map((card, index) => {
-            return (
-              <BigCard card={card} index={index} router={router} key={card.id} />
-            );
-          })}
+    <section className={"flex items-center gap-x-4 pt-7 flex-col bg-white"}>
+      {isLoading ? (
+        <>
+          <BigCardSkelton count={bigCardNumber} />
+          <CardSkeleton
+            count={
+              postes.length - bigCardNumber > 0
+                ? postes.length - bigCardNumber
+                : 3
+            }
+          />
+        </>
+      ) : (
+        <>
+          <div className="md:grid md:grid-cols-2 md:gap-x-4 md:px-4 md:mb-4 lg:max-w-[85%] w-full md:self-start">
+            {postes.slice(0, bigCardNumber).map((card, index) => {
+              return (
+                <BigCard
+                  card={card}
+                  index={index}
+                  router={router}
+                  key={card.id}
+                />
+              );
+            })}
+          </div>
+          <Separator className="w-full my-4 mb-8 hidden md:block md:self-start" />
+          <div className="md:grid md:grid-cols-2 md:gap-y-6 lg:max-w-[85%] w-full md:self-start">
           {postes.slice(bigCardNumber).map((card, index) => {
             return (
-              <Card card={card} index={index} router={router} key={card.id} last={postes.length - 5} />
+              <Card
+                card={card}
+                index={index}
+                router={router}
+                key={card.id}
+                last={postes.length - 5}
+              />
             );
           })}
+          </div>
         </>
-}
+      )}
       {/* {isFetchingMore && <CardSkelton count={2} />} */}
       <div ref={divRef} style={{ height: "10px" }}></div>
     </section>
