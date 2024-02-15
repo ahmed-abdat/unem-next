@@ -12,7 +12,7 @@ import { Label } from "../ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
-import { useMemo, useState } from "react";
+import {  useMemo, useState } from "react";
 import { calculateMoyen } from "@/lib/calculate-moyen";
 import DialogResulta from "@/components/calculat-moyen/DialogResulta";
 
@@ -59,7 +59,7 @@ export default function Form({ option }: { option: string }) {
     useMemo(() => {
       setMoyenGenerale(null);
       reset()
-    }, [reset]);
+    }, [reset , option]);
 
 
   return (
