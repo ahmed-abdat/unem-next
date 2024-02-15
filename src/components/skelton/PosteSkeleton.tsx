@@ -33,6 +33,17 @@ function PosteSkelton() {
         <Skeleton className='h-[25px] w-full' />
         <Skeleton className='h-[25px] w-full' />
         <Skeleton className='h-[25px] w-full' />
+        <Skeleton className='h-[25px] w-full' />
+        <Skeleton className='h-[25px] w-full' />
+        <Skeleton className='h-[25px] w-full' />
+        <Skeleton className='h-[25px] w-full' />
+        <Skeleton className='h-[25px] w-full' />
+        <Skeleton className='h-[25px] w-full' />
+        <Skeleton className='h-[25px] w-full' />
+        <Skeleton className='h-[25px] w-full' />
+        <Skeleton className='h-[25px] w-full' />
+        <Skeleton className='h-[25px] w-full' />
+        <Skeleton className='h-[25px] w-full' />
     </div>
   </section>;
 }

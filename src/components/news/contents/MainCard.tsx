@@ -110,7 +110,7 @@ function CardsConatainer() {
       left: 0,
       behavior: 'smooth',
     });
-  }, []);
+  }, [postes]);
 
   return (
     <section className={"flex items-center gap-x-4 pt-7 flex-col bg-white"}>

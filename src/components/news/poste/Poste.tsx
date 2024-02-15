@@ -49,13 +49,22 @@ function Poste({ id }: { id: string }) {
     toast.success("تم نسخ الرابط بنجاح");
   };
 
- // handel selected image
-    const selectedImage = (url : string) => {
-      if (url) {
-        setImage(url);
-        setIsImageSelected(true);
-      }
-    };
+  // handel selected image
+  const selectedImage = (url: string) => {
+    if (url) {
+      setImage(url);
+      setIsImageSelected(true);
+    }
+  };
+
+  // scroll to top
+  useEffect(() => {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  }, [poste]);
 
   return (
     <>
@@ -64,7 +73,7 @@ function Poste({ id }: { id: string }) {
       ) : (
         <>
           <Dialoge isOpen={isImageSelected} setIsOpen={setIsImageSelected}>
-            <Carousele images={poste?.images} selectedImage={image}/>
+            <Carousele images={poste?.images} selectedImage={image} />
           </Dialoge>
           <section className="pt-6 bg-white min-h-[85dvh] sm:py-[20px] sm:px-4 ">
             <div className=" md:max-w-[80dvw]">
