@@ -61,8 +61,8 @@ export default function BigCards({
         <p
           className={cn(
             {
-              "text-lg": index === 0,
-              "text-sm": index !== 0,
+              "md:text-lg": index === 0,
+              "md:text-sm": index !== 0,
             },
             " text-muted-foreground font-noto mt-1"
           )}
@@ -70,7 +70,7 @@ export default function BigCards({
           {card.description.slice(0, 150)}
         </p>
       </div>
-      <Separator className="mb-2 md:mb-4 md:hidden" />
+      <Separator className="mb-6 md:mb-4 md:hidden" />
     </div>
   );
 }
