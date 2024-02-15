@@ -36,34 +36,34 @@ function CardsConatainer() {
   });
 
   useEffect(() => {
+    const fetchPostes = async () => {
+      try {
+        const q = query(
+          collection(db, "postes"),
+          orderBy("createdAt", "desc"),
+          limit(10)
+        );
+        const snapshot = await getDocs(q);
+        let postes: NewsPoste[] = [];
+        snapshot.forEach((doc) => {
+          const postData = doc.data() as NewsPoste; // Cast doc.data() to NewsPoste type
+          postes.push({ id: doc.id, ...postData });
+        });
+  
+        if (postes.length === 0) return;
+  
+        const lastVisible = snapshot.docs[snapshot.docs.length - 1];
+        setLastePoste(lastVisible);
+        setPostes(postes);
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error);
+        setIsLoading(false);
+      }
+    };
     fetchPostes();
   }, []);
 
-  const fetchPostes = async () => {
-    try {
-      const q = query(
-        collection(db, "postes"),
-        orderBy("createdAt", "desc"),
-        limit(10)
-      );
-      const snapshot = await getDocs(q);
-      let postes: NewsPoste[] = [];
-      snapshot.forEach((doc) => {
-        const postData = doc.data() as NewsPoste; // Cast doc.data() to NewsPoste type
-        postes.push({ id: doc.id, ...postData });
-      });
-
-      if (postes.length === 0) return;
-
-      const lastVisible = snapshot.docs[snapshot.docs.length - 1];
-      setLastePoste(lastVisible);
-      setPostes(postes);
-      setIsLoading(false);
-    } catch (error) {
-      console.log(error);
-      setIsLoading(false);
-    }
-  };
 
   useEffect(() => {
     const fetchMorePostes = async () => {
@@ -102,6 +102,15 @@ function CardsConatainer() {
   }, [inView, isFetchingMore, lastePoste, postes]);
 
   const bigCardNumber = 4;
+
+  // scroll to top 
+  useEffect(() => {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
+  }, []);
 
   return (
     <section className={"flex items-center gap-x-4 pt-7 flex-col bg-white"}>
