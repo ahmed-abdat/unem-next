@@ -78,6 +78,7 @@ function Poste({ id }: { id: string }) {
                 src={poste?.images[0].url}
                 alt={poste?.title}
                 fill
+                fetchPriority="high"
                 className="object-center object-cover"
               />
             </div>
