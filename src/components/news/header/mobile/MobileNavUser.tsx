@@ -15,7 +15,7 @@ export default function MobileNavUser({
       {!user ? (
           <Button className="flex items-center justify-center w-[90%]"  aria-label="login">
             <Link
-              href="/login"
+              href="#"
               onClick={() => closeOnCurrent("/login")}
               className="-m-2 block p-2 font-medium text-white"
               aria-label="login"
