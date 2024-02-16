@@ -20,12 +20,13 @@ export const getPoste = async (id: string | null) => {
   try {
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
+      const data = {...docSnap.data()};
       return {
         poste: {
-          ...docSnap.data(),
-          createdAt: docSnap.data().createdAt.seconds,
-          lasteUpdate: docSnap.data()?.lasteUpdate?.seconds || null,
-        },
+          ...data,
+          createdAt: data.createdAt.seconds,
+          lasteUpdate: data?.lasteUpdate?.seconds || null,
+        } as NewsPoste,
         docSnap,
       };
     } else {
