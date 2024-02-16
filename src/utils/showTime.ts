@@ -22,10 +22,10 @@ moment.updateLocale("ar_SA", {
   },
 });
 
-export   const showTime = (date : Timestamp) => {
+export   const showTime = (seconds : number) => {
     const now = moment();
-    if(!date) return null;
-    const time = date.seconds * 1000;
+    if(!seconds) return null;
+    const time = seconds * 1000;
     const momentTime = moment(time);
     const houreAndMinitFormate = momentTime.format("hh:mm");
     const monthAndDayFormat = momentTime.format("MM/DD");
@@ -39,9 +39,9 @@ export   const showTime = (date : Timestamp) => {
     );
   };
 
-export const showTimeDate = (date : Timestamp) => {
-    if(!date) return null;
-    const time = date.seconds * 1000;
+export const showTimeDate = (seconds : number) => {
+    if(!seconds) return null;
+    const time = seconds * 1000;
     const momentTime = moment(time);
     const dateFormate = momentTime.format("DD/MM/YYYY");
     return dateFormate;

@@ -1,34 +1,25 @@
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import { NewsPoste } from "@/types/news-poste";
+// import { redirect } from 'next/navigation'
 import Image from "next/image";
+import CardContainer from "./CardContainer";
 
 export default function BigCards({
   card,
   index,
-  router,
 }: {
   card: NewsPoste;
   index: number;
-  router: any;
 }) {
+
   return (
-    <div
-      className={cn(
-        {
-          "md:row-span-3": index === 0,
-          "md:flex": index !== 0,
-        },
-        "cursor-pointer w-full bg-white "
-      )}
-      key={`${card.id}-${index}`}
-      onClick={() => router.push(`news/${card.id}`)}
-    >
+    <CardContainer id={card.id} index={index} isBigCard>
       <div
         className={cn(
           {
-            "h-[350px] sm:min-h-[420px]": index === 0,
-            "h-[350px] md:h-[120px] sm:min-h-[100px] md:order-1 lg:max-w-[30%]": index !== 0,
+            "h-[300px] sm:min-h-[350px]": index === 0,
+            "h-[300px] md:h-[120px] sm:min-h-[100px] md:order-1 lg:max-w-[30%]": index !== 0,
           },
           "cursor-pointer rounded-sm  w-full max-w-full relative"
         )}
@@ -71,6 +62,6 @@ export default function BigCards({
         </p>
       </div>
       <Separator className="mb-6 md:mb-4 md:hidden" />
-    </div>
+    </CardContainer>
   );
 }

@@ -1,13 +1,18 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import {  Tajawal, Roboto } from "next/font/google";
 import { Toaster } from "sonner";
 import "./globals.css";
 
 export const metadata: Metadata = {
+  manifest: '/manifest.json',
   title: "الاتحاد الوطني لطلبة موريتانيا ",
   description: "Unem website",
 };
+
+export const viewport : Viewport = {
+themeColor : '#58cc02',
+}
 
 const RB = localFont({
   src: "./fonts/RB-Regular.ttf",

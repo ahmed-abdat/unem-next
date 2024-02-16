@@ -12,7 +12,7 @@ import { Label } from "../ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
-import {  useMemo, useState } from "react";
+import { useEffect ,useState } from "react";
 import { calculateMoyen } from "@/lib/calculate-moyen";
 import DialogResulta from "@/components/calculat-moyen/DialogResulta";
 
@@ -34,32 +34,24 @@ export default function Form({ option }: { option: string }) {
 
   const onSubmit = (data: TMoyenCalculation) => {
     const { FirsteMatiere, SecondMatiere, ThirdeMatiere, MoyenGenerale } = data;
-    
-    if (
-      FirsteMatiere === "" ||
-      SecondMatiere === "" ||
-      ThirdeMatiere === "" ||
-      MoyenGenerale === ""
-      )
-      return;
     setLoading(true);
     setTimeout(() => {
-      const MoyenGenerale = calculateMoyen(
-        data.FirsteMatiere,
-        data.SecondMatiere,
-        data.ThirdeMatiere,
-        data.MoyenGenerale
+      const moyenGenerale = calculateMoyen(
+        FirsteMatiere,
+        SecondMatiere,
+        ThirdeMatiere,
+        MoyenGenerale
         );
-        setMoyenGenerale(MoyenGenerale);
+        setMoyenGenerale(moyenGenerale);
         setLoading(false);
         setIsOpen(true);
-      }, 500);
+      }, 200);
     };
     
-    useMemo(() => {
+    useEffect(() => {
       setMoyenGenerale(null);
       reset()
-    }, [reset , option]);
+    }, [reset, option]);
 
 
   return (

@@ -1,47 +1,19 @@
 "use client";
 
-import { doc, getDoc } from "firebase/firestore/lite";
-import { getFirestore } from "firebase/firestore/lite";
-import { useEffect, useMemo, useState } from "react";
-import { app } from "@/config/firebase";
+import { useEffect, useState } from "react";
 // import Video from "./Video";
 import { showTime, showTimeDate } from "@/utils/showTime";
-import { DocumentData } from "firebase/firestore";
 import { toast } from "sonner";
 import Image from "next/image";
 import SharePoste from "./SharePoste";
 import PosteSkelton from "../../skelton/PosteSkeleton";
 import { Carousele } from "@/components/Caresol";
 import Dialoge from "@/components/Dialoge";
-// import PosteSkelton from "./PosteSkelton";
-// import ViewFullImage from "./ViewImage";
-function Poste({ id }: { id: string }) {
-  const [poste, setPoste] = useState<DocumentData | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+import { DocumentData } from "firebase/firestore/lite";
+function Poste({ poste , id } : { poste: DocumentData | null , id: string}) {
   const [isImageSelected, setIsImageSelected] = useState(false);
   const [image, setImage] = useState<string | null>(null);
-  const firestore = getFirestore(app);
 
-  useEffect(() => {
-    const getPoste = async (id: string) => {
-      const docRef = doc(firestore, "postes", id);
-      try {
-        const docSnap = await getDoc(docRef);
-        if (docSnap.exists()) {
-          setPoste(docSnap.data());
-          localStorage.setItem("poste", JSON.stringify(docSnap.data()));
-        } else {
-          console.log("No such document!");
-          setIsLoading(false);
-        }
-        setIsLoading(false);
-      } catch (error) {
-        setIsLoading(false);
-        console.log(error);
-      }
-    };
-    getPoste(id);
-  }, [id, firestore]);
 
   const url = `https://unem.vercel.app/news/${id}`;
   const handelCopy = () => {
@@ -68,7 +40,7 @@ function Poste({ id }: { id: string }) {
 
   return (
     <>
-      {isLoading ? (
+      {!poste ? (
         <PosteSkelton />
       ) : (
         <>
@@ -85,9 +57,11 @@ function Poste({ id }: { id: string }) {
             <div className="max-h-[412px] h-[300px] md:h-[420px] w-full overflow-hidden relative p-0 md:max-w-[80dvw]">
               <Image
                 src={poste?.images[0].url}
-                alt={poste?.title}
+                alt={poste?.title || 'thumbnail'}
                 fill
+                sizes="(max-width: 768px) 90vw, (max-width: 1200px) 50vw, 30vw"
                 fetchPriority="high"
+                priority={true}
                 className="object-center object-cover"
               />
             </div>
@@ -115,9 +89,11 @@ function Poste({ id }: { id: string }) {
                 >
                   <Image
                     src={image.url}
-                    alt={poste?.title}
+                    alt={poste?.title || 'poste image'}
                     onClick={() => selectedImage(image.url)}
                     fill
+                    sizes="(max-width: 768px) 80vw, (max-width: 1200px) 50vw, 33vw"
+                    quality={50}
                     className="object-center object-cover w-full h-full block rounded-md cursor-pointer"
                   />
                 </div>
