@@ -93,7 +93,6 @@ function Poste({ poste , id } : { poste: DocumentData | null , id: string}) {
                     onClick={() => selectedImage(image.url)}
                     fill
                     sizes="(max-width: 768px) 80vw, (max-width: 1200px) 50vw, 33vw"
-                    quality={50}
                     className="object-center object-cover w-full h-full block rounded-md cursor-pointer"
                   />
                 </div>

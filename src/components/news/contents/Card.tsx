@@ -33,6 +33,7 @@ export default function Card({
             alt={card.title}
             className="object-cover relative"
             fill
+            priority={true}
           />
         </div>
          </div>
