@@ -43,7 +43,7 @@ export const fetchPostes = async () => {
     const q = query(
       collection(firestore, "postes"),
       orderBy("createdAt", "desc"),
-      limit(10)
+      limit(8)
     );
     const snapshot = await getDocs(q);
     let postes: NewsPoste[] = [];
