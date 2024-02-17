@@ -3,6 +3,8 @@ import {getPoste} from '@/app/action'
 
 export const revalidate = 86400;
 
+
+
 interface PosteProps {
   params: {
     posteId: string;
@@ -12,9 +14,9 @@ interface PosteProps {
 export async function generateMetadata({ params} : PosteProps) {
   const {poste} = await getPoste(params.posteId);
   return {
-    title: `الاتحاد الوطني - ${poste?.title}`,
+    title: `${poste?.title}`,
     description: `الاتحاد الوطني لطلبة موريتانيا - الكليات - ${poste?.title}`,
-    metadataBase : new URL('https://uneme.vercel.app'),
+
     app : {
       name: 'unem',
       url: 'https://uneme.vercel.app',
@@ -22,7 +24,7 @@ export async function generateMetadata({ params} : PosteProps) {
     openGraph: {
       title: `unem - ${poste?.title}`,
       description: `الاتحاد الوطني لطلبة موريتانيا - الكليات - ${poste?.title}`,
-      url : `https://uneme.vercel.app/news/${poste?.id}`,
+      url : `/${poste?.id}`,
       siteName: 'unem',
       type: 'website',
       locale: 'ar_MA',
