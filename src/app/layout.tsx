@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import localFont from "next/font/local";
 import {  Tajawal, Roboto } from "next/font/google";
 import { Toaster } from "sonner";
@@ -50,6 +51,7 @@ export default function RootLayout({
         {children}
         <Toaster position="top-center" richColors />
         <Analytics />
+        <SpeedInsights/>
       </body>
     </html>
   );
