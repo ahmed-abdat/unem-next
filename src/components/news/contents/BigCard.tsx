@@ -34,6 +34,7 @@ export default function BigCards({
           fill
           sizes="(max-width: 768px) 90vw, (max-width: 1200px) 50vw, 30vw"
           priority={true}
+          loading="eager"
         />
       </div>
       <div className={cn({

@@ -33,6 +33,7 @@ export default function Card({
             alt={card.title}
             className="object-cover relative"
             sizes="(max-width: 768px) 90vw, (max-width: 1200px) 50vw, 30vw"
+            loading="eager"
             fill
             priority={true}
           />
