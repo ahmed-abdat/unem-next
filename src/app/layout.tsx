@@ -6,7 +6,10 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   manifest: '/manifest.json',
-  title: "الاتحاد الوطني لطلبة موريتانيا ",
+  title: {
+    default : "الاتحاد الوطني",
+    template : '%s - الاتحاد الوطني',
+  },
   description: "Unem website",
 };
 

@@ -11,10 +11,11 @@ import {
   doc,
   getDoc,
 } from "firebase/firestore/lite";
+import { cache } from 'react'
 
 const firestore = getFirestore(app);
 
-export const getPoste = async (id: string | null) => {
+export const getPoste = cache(async (id: string | null) => {
   if (!id) return { poste: null };
   const docRef = doc(firestore, "postes", id);
   try {
@@ -37,7 +38,7 @@ export const getPoste = async (id: string | null) => {
     console.log(error);
     return { poste: null };
   }
-};
+})
 
 export const fetchPostes = async () => {
   try {
@@ -72,7 +73,7 @@ export const fetchMorePostes = async ({
   let id: string | null = lastDocId;
 
   try {
-    const { docSnap } = await getPoste(lastDocId);
+    const { docSnap } = await getPoste(lastDocId as string);
 
     const q = query(
       collection(firestore, "postes"),

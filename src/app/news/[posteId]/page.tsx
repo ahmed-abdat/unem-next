@@ -1,7 +1,7 @@
 import Postes from "@/components/news/poste/Poste";
 import {getPoste} from '@/app/action'
 
-
+export const revalidate = 86400;
 
 interface PosteProps {
   params: {

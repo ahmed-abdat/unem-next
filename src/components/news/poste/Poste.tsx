@@ -10,6 +10,7 @@ import PosteSkelton from "../../skelton/PosteSkeleton";
 import { Carousele } from "@/components/Caresol";
 import Dialoge from "@/components/Dialoge";
 import { DocumentData } from "firebase/firestore/lite";
+import { Separator } from "@/components/ui/separator";
 function Poste({ poste , id } : { poste: DocumentData | null , id: string}) {
   const [isImageSelected, setIsImageSelected] = useState(false);
   const [image, setImage] = useState<string | null>(null);
@@ -48,13 +49,13 @@ function Poste({ poste , id } : { poste: DocumentData | null , id: string}) {
             <Carousele images={poste?.images} selectedImage={image} />
           </Dialoge>
           <section className="pt-6 bg-white min-h-[85dvh] sm:py-[20px] sm:px-4 ">
-            <div className=" md:max-w-[80dvw]">
+            <div className=" md:max-w-[70dvw]">
               <h1 className="font-rb text-2xl font-bold md:text-4xl pb-2">
                 {poste?.title}
               </h1>
             </div>
 
-            <div className="max-h-[412px] h-[300px] md:h-[420px] w-full overflow-hidden relative p-0 md:max-w-[80dvw]">
+            <div className="max-h-[412px] h-[300px] md:h-[420px] w-full overflow-hidden relative p-0 md:max-w-[70dvw]">
               <Image
                 src={poste?.images[0].url}
                 alt={poste?.title || 'thumbnail'}
@@ -66,7 +67,7 @@ function Poste({ poste , id } : { poste: DocumentData | null , id: string}) {
               />
             </div>
 
-            <div className="flex flex-col m-3 py-0 px-4 gap-4 border-r-[5px] border-disabeld-btn md:max-w-[80dvw]">
+            <div className="flex flex-col m-3 py-0 px-4 gap-4 border-r-[5px] border-disabeld-btn md:max-w-[70dvw]">
               <div className="text-[0.85rem] text-muted-foreground flex items-center gap-[0.8rem] font-rb">
                 <span className="create-time">
                   {showTime(poste?.createdAt)}
@@ -78,7 +79,7 @@ function Poste({ poste , id } : { poste: DocumentData | null , id: string}) {
               </div>
               <SharePoste handelCopy={handelCopy} url={url} />
             </div>
-            <div className="p-3 leading-10 block font-noto text-[19px] text-gray-800 sm:min-w-[80dvw] lg:max-w-[60dvw] md:max-w-[80dvw]">
+            <div className="p-3 leading-10 block font-noto text-[19px] text-gray-800 sm:min-w-[80dvw] lg:max-w-[60dvw] md:max-w-[70dvw]">
               <p>{poste?.description}</p>
             </div>
             <div className="px-3 mt-4 grid grid-cols-mobile gap-[0.3rem] sm:grid-cols-tablet sm:gap-[0.4rem] lg:grid-cols-desktop w-full h-full">
@@ -99,6 +100,7 @@ function Poste({ poste , id } : { poste: DocumentData | null , id: string}) {
               ))}
             </div>
           </section>
+          <Separator  />
         </>
       )}
     </>
