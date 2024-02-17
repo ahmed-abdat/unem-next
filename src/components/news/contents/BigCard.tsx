@@ -32,8 +32,8 @@ export default function BigCards({
           alt={card.title}
           className="object-cover relative"
           fill
+          sizes="(max-width: 768px) 90vw, (max-width: 1200px) 50vw, 30vw"
           priority={true}
-          objectFit="cover"
         />
       </div>
       <div className={cn({

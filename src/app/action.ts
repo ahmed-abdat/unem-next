@@ -44,7 +44,7 @@ export const fetchPostes = async () => {
     const q = query(
       collection(firestore, "postes"),
       orderBy("createdAt", "desc"),
-      limit(8)
+      limit(6)
     );
     const snapshot = await getDocs(q);
     let postes: NewsPoste[] = [];
@@ -78,7 +78,7 @@ export const fetchMorePostes = async ({
       collection(firestore, "postes"),
       orderBy("createdAt", "desc"),
       startAfter(docSnap),
-      limit(6)
+      limit(4)
     );
     const querySnapshot = await getDocs(q);
     let otherposte: NewsPoste[] = [];

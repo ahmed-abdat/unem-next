@@ -1,6 +1,7 @@
 import HomeFooter from "@/components/home/HomeFooter";
 import HomeOption from "@/components/home/HomeOption";
 import Image from "next/image";
+import logo from "../../public/logo.png";
 // import texture from "../../public/texture.png";
 
 export default function Home() {
@@ -13,9 +14,10 @@ export default function Home() {
           </div>
           <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2">
             <Image
-              src='/logo.png'
+              src={logo}
               width={144}
               height={144}
+              placeholder="blur"
               alt="logo"
               className="object-contain rounded-md"
             />

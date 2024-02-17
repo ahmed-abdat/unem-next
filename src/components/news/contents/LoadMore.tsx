@@ -8,13 +8,10 @@ import { useInView } from "react-intersection-observer";
 import Card from "./Card";
 
 export default function InView({ lastDocId }: { lastDocId: string | null }) {
-  const { ref, inView } = useInView({
-    delay: 100,
-  });
+  const { ref, inView } = useInView();
 
 
   const [lastDocID, setlastDocID] = useState<string | null>(lastDocId);
-  const [isFetchingMore, setIsFetchingMore] = useState(true);
   const [postes, setPostes] = useState<NewsPoste[]>([]);
 
   useEffect(() => {
@@ -23,7 +20,6 @@ export default function InView({ lastDocId }: { lastDocId: string | null }) {
       setlastDocID(id);
       
       setPostes([...postes, ...otherPostes]);
-      setIsFetchingMore(false);
     };
 
     
@@ -31,17 +27,17 @@ export default function InView({ lastDocId }: { lastDocId: string | null }) {
     if (inView && lastDocID ) {
       fetchMore();
     }
-  },[inView , lastDocID]);
+  },[inView , lastDocID , postes]);
 
   
 
   return (
     <>
-      <div ref={ref} className="w-full h-full">
-       {isFetchingMore ? (
-          <CardSkeleton count={6} /> ): (
+      <div ref={ref} className="w-full h-6"></div>
+       {postes.length === 0 ? (
+          <CardSkeleton count={4} /> ): (
             <div className="md:grid md:grid-cols-2 md:gap-y-6 lg:max-w-[85%] w-full md:self-start">
-            {postes.map((card, index) => {
+            {postes?.map((card, index) => {
               return (
                 <Card
                   card={card}
@@ -53,7 +49,6 @@ export default function InView({ lastDocId }: { lastDocId: string | null }) {
             })}
             </div>
           )}
-      </div>
     </>
   );
 }

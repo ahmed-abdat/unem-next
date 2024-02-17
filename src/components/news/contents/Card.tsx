@@ -32,6 +32,7 @@ export default function Card({
             src={card.images[0]?.url}
             alt={card.title}
             className="object-cover relative"
+            sizes="(max-width: 768px) 90vw, (max-width: 1200px) 50vw, 30vw"
             fill
             priority={true}
           />
