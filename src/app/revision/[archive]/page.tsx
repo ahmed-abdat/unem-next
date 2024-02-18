@@ -19,7 +19,6 @@ export default function Archives({ params }: { params: { archive: string } }) {
   );
   const fac = faculiter[0].faculiter;
   const filiers = faculiter[0].filieres;
-  console.log(faculiter[0].faculiter);
 
   const archivesOption = filiers as optionType[];
 
