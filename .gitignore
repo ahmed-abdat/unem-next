@@ -31,6 +31,7 @@ yarn-error.log*
 # server workers
 sw.js
 workbox-*.js
+swe-*.js
 
 # vercel
 .vercel
