@@ -6,17 +6,21 @@ import { NewsPoste } from "@/types/news-poste";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import Card from "./Card";
+import { cn } from "@/lib/utils";
 
 export default function InView({ lastDocId }: { lastDocId: string | null }) {
   const { ref, inView } = useInView();
 
+  console.log(lastDocId);
+  
 
   const [lastDocID, setlastDocID] = useState<string | null>(lastDocId);
   const [postes, setPostes] = useState<NewsPoste[]>([]);
 
   useEffect(() => {
-    const fetchMore = async () => {
-      const { otherPostes , id } = await fetchMorePostes({ lastDocId : lastDocID });
+    const fetchMore = async (lastDoc : string) => {
+      const { otherPostes , id } = await fetchMorePostes({ lastDocId : lastDoc });
+      if(!id) return;
       setlastDocID(id);
       
       setPostes([...postes, ...otherPostes]);
@@ -25,7 +29,7 @@ export default function InView({ lastDocId }: { lastDocId: string | null }) {
     
 
     if (inView && lastDocID ) {
-      fetchMore();
+      fetchMore(lastDocID);
     }
   },[inView , lastDocID , postes]);
 
@@ -33,8 +37,11 @@ export default function InView({ lastDocId }: { lastDocId: string | null }) {
 
   return (
     <>
-      <div ref={ref} className="w-full h-6"></div>
-       {postes.length === 0 ? (
+      <div ref={ref} className={cn({
+        "w-full h-8" : lastDocID,
+        "w-full h-2 bg-transparent" : !lastDocID
+      })}></div>
+       {postes.length === 0 && lastDocID ? (
           <CardSkeleton count={4} /> ): (
             <div className="md:grid md:grid-cols-2 md:gap-y-6 lg:max-w-[85%] w-full md:self-start">
             {postes?.map((card, index) => {

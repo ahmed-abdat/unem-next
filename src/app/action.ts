@@ -71,6 +71,7 @@ export const fetchMorePostes = async ({
 }) => {
   console.log("fetchMorePostes");
   let id: string | null = lastDocId;
+  if(!id) return { otherPostes: [], id: null };
 
   try {
     const { docSnap } = await getPoste(lastDocId as string);
