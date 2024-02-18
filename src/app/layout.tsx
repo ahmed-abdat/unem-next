@@ -10,10 +10,10 @@ export const metadata: Metadata = {
   metadataBase : new URL('https://uneme.vercel.app'),
   manifest: '/manifest.json',
   title: {
-    default : "الاتحاد الوطني",
+    default : 'الأخبار والمنشورات',
     template : '%s - الاتحاد الوطني',
   },
-  description: "Unem website",
+  description: "الاتحاد الوطني لطلبة موريتانيا - الأخبار والمنشورات",
 };
 
 export const viewport : Viewport = {
@@ -49,7 +49,7 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl">
       <body className={`${RB.className} ${tajawal.className} ${roboto.className} bg-main`}>
-        {children}
+      {children}
         <Toaster position="top-center" richColors />
         <Analytics />
         <SpeedInsights/>

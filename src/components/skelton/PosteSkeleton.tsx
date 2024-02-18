@@ -2,7 +2,7 @@ import { Skeleton } from '@/components/ui/skeleton';
 
 
 function PosteSkelton() {
-  return <section className="py-[40px] bg-white min-h-[85dvh] sm:py-[30px] sm:px-4 ">
+  return <section className="py-[40px] bg-white min-h-[85dvh] sm:py-[30px] sm:px-4">
       <div className="mb-4 flex flex-col gap-y-2 md:max-w-[80dvw]">
         <Skeleton  className='w-full h-[30px]' />
         <Skeleton  className='w-full h-[30px]' />

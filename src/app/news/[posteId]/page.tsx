@@ -1,5 +1,6 @@
 import Postes from "@/components/news/poste/Poste";
 import {getPoste} from '@/app/action'
+import PosteSkelton from "@/components/skelton/PosteSkeleton";
 
 export const revalidate = 86400;
 
@@ -47,5 +48,11 @@ export default async function Poste({ params }: PosteProps) {
   
   
 
-  return <Postes id={params.posteId} poste={poste} />;
+  return (
+    <>
+    {
+      !poste ? <PosteSkelton /> : <Postes id={params.posteId} poste={poste} />
+    }
+    </>
+  );
 }

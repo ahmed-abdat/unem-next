@@ -3,7 +3,7 @@ import {optionType} from '@/types/options-type'
 export const options : optionType[] = [
         {
             content: "الأخبار",
-            url: "/news",
+            url: "/",
         },
         {
             content: "حساب المعدل التوجيهي",
