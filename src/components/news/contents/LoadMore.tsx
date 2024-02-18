@@ -10,10 +10,7 @@ import { cn } from "@/lib/utils";
 
 export default function InView({ lastDocId }: { lastDocId: string | null }) {
   const { ref, inView } = useInView();
-
-  console.log(lastDocId);
   
-
   const [lastDocID, setlastDocID] = useState<string | null>(lastDocId);
   const [postes, setPostes] = useState<NewsPoste[]>([]);
 

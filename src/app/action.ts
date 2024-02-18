@@ -45,7 +45,7 @@ export const fetchPostes = async () => {
     const q = query(
       collection(firestore, "postes"),
       orderBy("createdAt", "desc"),
-      limit(12)
+      limit(10)
     );
     const snapshot = await getDocs(q);
     let postes: NewsPoste[] = [];
@@ -54,7 +54,13 @@ export const fetchPostes = async () => {
       postes.push({ id: doc.id, ...postData });
     });
 
-    if (postes.length === 0) return { postes: [], lastDocId: null };
+    if (postes.length === 0 ) return { postes: [], lastDocId: null };
+
+    if(postes.length <= 9){
+      return { postes, lastDocId: null };
+    }
+    
+    
 
     const lastDocId = snapshot.docs[snapshot.docs.length - 1].id;
     return { postes, lastDocId };
