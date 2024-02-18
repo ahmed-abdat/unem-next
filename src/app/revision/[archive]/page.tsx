@@ -4,6 +4,15 @@ import { archives } from "@/constats/archives";
 import PageOptions from "@/components/PageOptions";
 import { optionType } from "@/types/options-type";
 
+
+export async function generateStaticParams() {
+  return archives.map((archive) => ({
+    params: {
+      archive,
+    },
+  }));
+}
+
 export default function Archives({ params }: { params: { archive: string } }) {
   const faculiter = archives.filter(
     (archive) => archive.faculiter === params.archive

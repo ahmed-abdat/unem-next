@@ -99,3 +99,19 @@ export const fetchMorePostes = async ({
     return { otherPostes: [], id: null };
   }
 };
+
+
+// get all postes
+export const getAllPostes = async () => {
+  const q = query(
+    collection(firestore, "postes"),
+    orderBy("createdAt", "desc")
+  );
+  const snapshot = await getDocs(q);
+  let postes: NewsPoste[] = [];
+  snapshot.forEach((doc) => {
+    const postData = doc.data() as NewsPoste; // Cast doc.data() to NewsPoste type
+    postes.push({ id: doc.id, ...postData });
+  });
+  return postes;
+}

@@ -2,7 +2,12 @@ import HeaderImage from "@/components/HeaderImage";
 import FooterImage from "@/components/FooterImage";
 // import { tajawal} from "@/app/layout";
 
-export default function Schedule({ params } : {params: {schedule: string}}) {
+
+export async function generateStaticParams() {
+  return [];
+}
+
+export default function Schedule() {
   return <>
   <HeaderImage picture="/06.png" />
   <section className="min-h-[68dvh] md:min-w-[55dvh] flex items-center justify-center px-2 text-center text-whtssap-label" >

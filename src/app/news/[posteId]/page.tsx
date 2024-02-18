@@ -1,10 +1,7 @@
 import Postes from "@/components/news/poste/Poste";
-import {getPoste} from '@/app/action'
-import PosteSkelton from "@/components/skelton/PosteSkeleton";
+import {getPoste , getAllPostes} from '@/app/action'
 
 export const revalidate = 86400;
-
-
 
 interface PosteProps {
   params: {
@@ -42,17 +39,17 @@ export async function generateMetadata({ params} : PosteProps) {
   };
 }
 
+export async function generateStaticParams() {
+  const postes = await getAllPostes();
+  return postes.map((poste) => ({
+    params: {
+      posteId: poste.id,
+    },
+  }));
+}
+
 export default async function Poste({ params }: PosteProps) {
   const {poste} = await getPoste(params.posteId);
 
-  
-  
-
-  return (
-    <>
-    {
-      !poste ? <PosteSkelton /> : <Postes id={params.posteId} poste={poste} />
-    }
-    </>
-  );
+  return  <Postes id={params.posteId} poste={poste} />
 }

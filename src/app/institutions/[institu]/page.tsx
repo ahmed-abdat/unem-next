@@ -1,6 +1,14 @@
 import FullImages from "@/components/FullImage";
+import {institutions} from '@/constats/options/institutions'
 
-export async function generateMetadata({ params} : {params : {institu : string}}) {
+
+interface InstituProps {
+  params: {
+    institu: string;
+  };
+}
+
+export async function generateMetadata({ params} : InstituProps) {
   return {
     title: `الاتحاد الوطني - ${params.institu}`,
     description: `الاتحاد الوطني لطلبة موريتانيا - الكليات - ${params.institu}`,
@@ -30,6 +38,15 @@ export async function generateMetadata({ params} : {params : {institu : string}}
   };
 }
 
-export default function Institu({ params} : {params : {institu : string}}) {
+export async function generateStaticParams() {
+  return institutions.map((institu) => ({
+    params: {
+      institu,
+    },
+  }));
+
+}
+
+export default function Institu({ params} : InstituProps) {
   return <FullImages src={`/fac2/${params.institu}.jpg`} />;
 }
