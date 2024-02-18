@@ -20,8 +20,12 @@ export default function InView({ lastDocId }: { lastDocId: string | null }) {
   useEffect(() => {
     const fetchMore = async (lastDoc : string) => {
       const { otherPostes , id } = await fetchMorePostes({ lastDocId : lastDoc });
-      if(!id) return;
-      setlastDocID(id);
+      if(id) {
+        setlastDocID(id);
+      }else {
+        setlastDocID(null);
+        return;
+      }
       
       setPostes([...postes, ...otherPostes]);
     };
