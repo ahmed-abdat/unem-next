@@ -7,7 +7,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "الكليات",
-  description: "الكليات",
+  description: "الاتحاد الوطني لطلبة موريتانيا - الكليات",
 };
 
 export default function Institutions() {

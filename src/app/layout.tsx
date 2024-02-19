@@ -10,8 +10,8 @@ export const metadata: Metadata = {
   metadataBase : new URL('https://uneme.vercel.app'),
   manifest: '/manifest.json',
   title: {
-    default : 'الأخبار والمنشورات',
-    template : '%s - الاتحاد الوطني',
+    default : 'الاتحاد الوطني لطلبة موريتانيا',
+    template : '%s | الاتحاد الوطني',
   },
   description: "الاتحاد الوطني لطلبة موريتانيا - الأخبار والمنشورات",
 };
@@ -21,9 +21,9 @@ themeColor : '#58cc02',
 }
 
 const RB = localFont({
-  src: "./fonts/RB-Regular.ttf",
+  src: "../../public/fonts/RB-Regular.ttf",
   variable: "--font-rb",
-  // preload: true,
+  preload: true,
   fallback : ['sans-serif','system-ui', 'arial']
 });
 

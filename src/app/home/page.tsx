@@ -4,6 +4,14 @@ import Image from "next/image";
 import logo from "../../../public/logo.png";
 // import texture from "../../public/texture.png";
 
+import { Metadata } from "next";
+
+
+export const metadata: Metadata = {
+  title: 'الرئيسية',
+  description: "الاتحاد الوطني لطلبة موريتانيا - الرئيسية",
+};
+
 export default function Home() {
   return (
     <main className="relative min-h-screen pb-48 bg-gradient-main from-green-1 to-green-2 text-white">

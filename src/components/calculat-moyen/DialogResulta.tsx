@@ -12,10 +12,14 @@ import {
     isOpen,
     setIsOpen,
     moyenGenerale,
+    congrateText,
+    subText
   }: {
     isOpen: boolean;
     setIsOpen: (value: boolean) => void;
     moyenGenerale: number | null;
+    congrateText?: string;
+    subText?: string;
   }) {
     return (
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
@@ -40,14 +44,12 @@ import {
                 )}
               >
                 {
-                  moyenGenerale && moyenGenerale <= 10 && 'معدلك التوجيهي هو'
+                  moyenGenerale && moyenGenerale <= 10 ? <span> {subText || 'معدلك التوجيهي هو'} </span>  :  moyenGenerale && moyenGenerale > 10 && <>
+                  <span> {congrateText || 'مبروك معدلك التوجيهي هو'}</span>
+                  <Image src="/conngrat.gif" width={85} height={100} className='flex items-center justify-center object-cover transform rotate-[93deg] h-[100px] w-[85px] ' alt="congratilation"/>
+                  </>
                 }
-                {
-                    moyenGenerale && moyenGenerale > 10 && <>
-                    <span> مبروك معدلك التوجيهي هو</span>
-                    <Image src="/conngrat.gif" width={85} height={100} className='flex items-center justify-center object-cover transform rotate-[93deg] h-[100px] w-[85px] ' alt="congratilation"/>
-                    </>
-                }
+        
               </h2>
               <h3
                 className={cn(

@@ -7,14 +7,14 @@ export default function PageOptions({
   subRoute,
   isLink,
 }: {
-  options: optionType[];
+  options: optionType[] | undefined;
   mainRoute?: string;
   subRoute?: string ;
   isLink?: boolean;
 }) {
   return (
     <section className="px-2 pb-8 pt-8 flex flex-col gap-[1rem] min-h-[68vh] md:max-w-[70%] md:mx-auto">
-      {options.map((option) => (
+      {options?.map((option) => (
         <div
           className="relative py-2 px-4 text-center font-medium bg-white rounded-lg shadow-option cursor-pointer overflow-hidden"
           key={option.url}
