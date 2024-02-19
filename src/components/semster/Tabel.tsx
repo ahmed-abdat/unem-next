@@ -27,7 +27,7 @@ export function Tabel({ student , semester , moyenGeneral}: { student: Student[]
   if(student.length === 0) return <h1>لا يوجد طالب بهذا الرقم</h1>
   return (
     <>
-    <StudentInfo department={student[0]?.dep} semester={semester} name={student[0]?.name || 'unkown'}  />
+    <StudentInfo department={student[0]?.dep || 'الشعبة'} semester={semester} name={student[0]?.name || 'unkown'}  />
     <Table dir="rtl">
       <TableHeader>
         <TableRow>
