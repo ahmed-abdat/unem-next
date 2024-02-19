@@ -18,7 +18,7 @@ export const resulta : optionType[] = [
     },
     {
       content : 'المعهد العالي للدراسات و البحوث الإسلامية' ,
-      url : 'https://www.iseri.mr/'
+      url : '/semester-resulta'
     }, 
     {
       content : 'المعهد الجامعي المهني',
