@@ -3,8 +3,11 @@ import s3 from "@/constats/resulta/S3.json";
 import s5 from "@/constats/resulta/S5.json";
 import { Student } from "@/lib/calculate-student-moyen-genral";
 
+
+
+
 export const findStudent = (selectedSemester: string, id: string): Student[] => {
-  let students: Student[] = [];
+  let students: any = [];
 
   if (selectedSemester === "s1") {
     students = s1.filter((student) => student.num === id) as Student[];

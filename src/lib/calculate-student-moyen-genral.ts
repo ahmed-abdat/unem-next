@@ -1,13 +1,13 @@
 export type Student = {
-    dec: string | number | undefined;
+    dec?: string | number | undefined;
     moy: number | string;
-    exam: number | string;
-    test: number | string;
-    name: string;
-    num: string | number;
-    mat: string;
+    exam?: number | string;
+    test?: number | string;
+    name?: string;
+    num?: string | number;
+    mat?: string;
     coef: number | string;
-    dep: string;
+    dep?: string;
 };
 
 export const calculateGeneralAverage = (student : Student[] ) => {
