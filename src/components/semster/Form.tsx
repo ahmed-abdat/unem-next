@@ -101,7 +101,7 @@ export default function Form() {
           <Button
             disabled={loading}
             type="submit"
-            className="sm:max-w-[40%] sm:mx-auto sm:w-full md:w-full font-tajawal font-medium shadow-btne cursor-pointer text-white text-lg  bg-btn hover:bg-btn px-[15px] py-[1.65rem] rounded-lg disabled:opacity-[0.7] disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-disabeld-btn active:shadow-none active:transform active:translate-x-0 active:translate-y-1 transition-all"
+            className="sm:max-w-[40%] sm:mx-auto sm:w-full md:w-full md:max-w-[35%] lg:max-w-[30%] font-tajawal font-medium shadow-btne cursor-pointer text-white text-lg  bg-btn hover:bg-btn px-[15px] py-[1.65rem] rounded-lg disabled:opacity-[0.7] disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-disabeld-btn active:shadow-none active:transform active:translate-x-0 active:translate-y-1 transition-all"
           >
             بحث
             {loading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
