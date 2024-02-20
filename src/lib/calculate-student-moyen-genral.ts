@@ -1,18 +1,18 @@
 export type Student = {
-    dec?: string | number | undefined;
-    moy: number | string;
-    exam?: number | string;
-    test?: number | string;
-    name?: string;
-    num?: string | number;
-    mat?: string;
-    coef: number | string;
-    dep?: string;
+    dec: string ;
+    moy: number ;
+    exam: number ;
+    test: number ;
+    name: string;
+    num: string | number;
+    mat: string;
+    coef: number ;
+    dep: string;
 };
 
 export const calculateGeneralAverage = (student : Student[] ) => {
-    let totalWeightedMarks = 0;
-    let totalCoefficient = 0;
+    let totalWeightedMarks  = 0;
+    let totalCoefficient  = 0;
 
     // Iterate through each subject for the student
     student.forEach(subject => {
