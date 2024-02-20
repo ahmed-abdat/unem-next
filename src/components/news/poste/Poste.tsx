@@ -1,19 +1,25 @@
 "use client";
 
 import { useEffect, useState } from "react";
-// import Video from "./Video";
 import { showTime, showTimeDate } from "@/utils/showTime";
 import { toast } from "sonner";
 import Image from "next/image";
 import SharePoste from "./SharePoste";
-import PosteSkelton from "../../skelton/PosteSkeleton";
 import { Carousele } from "@/components/Caresol";
 import Dialoge from "@/components/Dialoge";
 import { DocumentData } from "firebase/firestore/lite";
 import { Separator } from "@/components/ui/separator";
+import Thumbnail from "@/components/news/poste/Thumbnail";
+import { Skeleton } from "@/components/ui/skeleton";
 function Poste({ poste , id } : { poste: DocumentData | null , id: string}) {
   const [isImageSelected, setIsImageSelected] = useState(false);
   const [image, setImage] = useState<string | null>(null);
+  const [isClient , setIsClient] = useState(false);
+
+
+  useEffect(() => {
+    setIsClient(true);
+  },[]);
 
 
   const url = `https://unem.vercel.app/news/${id}`;
@@ -40,32 +46,20 @@ function Poste({ poste , id } : { poste: DocumentData | null , id: string}) {
   }, [poste]);
 
   return (
-    <>
-      {!poste ? (
-        <PosteSkelton />
-      ) : (
         <>
           <Dialoge isOpen={isImageSelected} setIsOpen={setIsImageSelected}>
             <Carousele images={poste?.images} selectedImage={image} />
           </Dialoge>
           <section className="pt-6 bg-white min-h-[85dvh] sm:py-[20px] sm:px-4 ">
             <div className=" md:max-w-[70dvw]">
-              <h1 className="font-rb text-2xl font-bold md:text-4xl pb-2">
+              <h2 className="font-rb text-2xl font-bold md:text-4xl pb-2">
                 {poste?.title}
-              </h1>
-            </div>
-
-            <div className="max-h-[412px] h-[300px] md:h-[420px] w-full overflow-hidden relative p-0 md:max-w-[70dvw]">
-              <Image
-                src={poste?.images[0].url}
-                alt={poste?.title || 'thumbnail'}
-                fill
-                sizes="(max-width: 768px) 90vw, (max-width: 1200px) 50vw, 30vw"
-                fetchPriority="high"
-                priority={true}
-                className="object-center object-cover"
-              />
-            </div>
+              </h2>
+            </div>   
+            {
+              isClient ? <Thumbnail imageSrc={poste?.images[0].url} videoUrl={poste?.videoUrl} /> : <Skeleton className="w-full h-[300px] md:max-w-[70dvw]" />
+            }
+        
 
             <div className="flex flex-col m-3 py-0 px-4 gap-4 border-r-[5px] border-disabeld-btn md:max-w-[70dvw]">
               <div className="text-[0.85rem] text-muted-foreground flex items-center gap-[0.8rem] font-rb">
@@ -102,8 +96,6 @@ function Poste({ poste , id } : { poste: DocumentData | null , id: string}) {
           </section>
           <Separator  />
         </>
-      )}
-    </>
   );
 }
 export default Poste;
