@@ -1,6 +1,12 @@
 import HeaderImage from "@/components/HeaderImage";
 import FooterImage from "@/components/FooterImage";
 import WhatsappForm from "@/components/whatsapp/Form";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "المجموعات الواتسابية (باكلوريا)",
+  description: "الاتحاد الوطني لطلبة موريتانيا - المجموعات الواتسابية (باكلوريا)",
+};
 
 
 export default function Whatsapp() {

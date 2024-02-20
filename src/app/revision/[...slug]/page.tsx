@@ -1,9 +1,28 @@
 import HeaderImage from "@/components/HeaderImage";
 import PageOptions from "@/components/PageOptions";
 import FooterImage from "@/components/FooterImage";
-import { Archive, archives } from "@/constats/archives";
+import {  archives } from "@/constats/archives";
 import NewsHeader from "@/components/news/header/NewsHeader";
 import Iframe from "@/components/Iframe";
+
+export async function generateMetadata({ params } : { params: { slug: string[] } } ) {
+  return {
+    title: `الاتحاد الوطني - ${params.slug[0]}`,
+    description: `الاتحاد الوطني لطلبة موريتانيا - الكليات - ${params.slug[0]} - ${params.slug[1]}`,
+    metadataBase : new URL('https://unem2000.com'),
+    app : {
+      name: 'unem',
+      url: 'https://unem2000.com',
+    },
+    openGraph: {
+      title: `unem - ${params.slug[0]}`,
+      description: `الاتحاد الوطني لطلبة موريتانيا - الكليات - ${params.slug[0]} - ${params.slug[1]}`,
+      siteName: 'unem',
+      type: 'website',
+      locale: 'ar_MA',
+    },
+  };
+}
 
 
 export async function generateStaticParams() {

@@ -1,6 +1,12 @@
 import Form from "@/components/semster/Form";
 import HeaderImage from "@/components/HeaderImage";
 import FooterImage from "@/components/FooterImage";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "نتائج امتحانات المعهد العالي للدراسات والبحوث الإسلامية 2024-2023",
+  description: "الاتحاد الوطني لطلبة موريتانيا - نتائج امتحانات المعهد العالي للدراسات والبحوث الإسلامية 2024-2023",
+};
 
 export default async function SemsterPage() {
   return (

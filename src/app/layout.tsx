@@ -7,7 +7,7 @@ import { Toaster } from "sonner";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase : new URL('https://uneme.vercel.app'),
+  metadataBase : new URL('https://unem2000.com'),
   manifest: '/manifest.json',
   title: {
     default : 'الاتحاد الوطني لطلبة موريتانيا',

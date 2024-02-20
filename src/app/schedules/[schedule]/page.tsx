@@ -1,6 +1,24 @@
 import HeaderImage from "@/components/HeaderImage";
 import FooterImage from "@/components/FooterImage";
 // import { tajawal} from "@/app/layout";
+export async function generateMetadata() {
+  return {
+    title: `الاتحاد الوطني - جداول الحصص`,
+    description: `الاتحاد الوطني لطلبة موريتانيا - الكليات - جداول الحصص }`,
+    metadataBase : new URL('https://unem2000.com'),
+    app : {
+      name: 'unem2000',
+      url: 'https://unem2000.com',
+    },
+    openGraph: {
+      title: `unem - جداول الحصص`,
+      description: `الاتحاد الوطني لطلبة موريتانيا - الكليات - جداول الحصص}`,
+      siteName: 'unem2000',
+      type: 'website',
+      locale: 'ar_MA',
+    },
+  };
+}
 
 
 export async function generateStaticParams() {
