@@ -14,21 +14,18 @@ export default function SelectSemster({ setOption , option}: { setOption: (value
     }
 
   return (
-    <Select onValueChange={handleItemClick} defaultValue={option}>
-      <SelectTrigger className="w-[220px] md:w-[200px]">
+    <Select onValueChange={handleItemClick} defaultValue={option} >
+      <SelectTrigger className="w-[220px] md:w-[200px]" aria-label="semester-option">
         <SelectValue placeholder="semester" />
       </SelectTrigger>
-      <SelectContent className='w-[150px]'>
+      <SelectContent className='w-[150px]' >
         {
             semesterOptions.map((option: SemesterOption) => (
-                <SelectItem key={option.value} value={option.value} >
+                <SelectItem key={option.value} value={option.value} aria-label={option.label}>
                     {option.label}
                 </SelectItem>
             ))
         }
-        {/* <SelectItem value="light">Light</SelectItem>
-        <SelectItem value="dark">Dark</SelectItem>
-        <SelectItem value="system">System</SelectItem> */}
       </SelectContent>
     </Select>
   );
