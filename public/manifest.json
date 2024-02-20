@@ -2,7 +2,7 @@
   "name": "unem",
   "short_name": "unem",
   "theme_color": "#26a306",
-  "background_color": "#186a02",
+  "background_color": "#f8f8f8",
   "display": "standalone",
   "orientation": "portrait",
   "scope": "/",
