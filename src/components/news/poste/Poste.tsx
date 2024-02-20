@@ -52,7 +52,7 @@ function Poste({ poste , id } : { poste: DocumentData | null , id: string}) {
           </Dialoge>
           <section className="pt-6 bg-white min-h-[85dvh] sm:py-[20px] sm:px-4 ">
             <div className=" md:max-w-[70dvw]">
-              <h2 className="font-rb text-2xl font-bold md:text-4xl pb-2">
+              <h2 className="font-aljaziraBold font-bold leading-normal text-2xl md:text-4xl pb-2">
                 {poste?.title}
               </h2>
             </div>   
@@ -62,19 +62,19 @@ function Poste({ poste , id } : { poste: DocumentData | null , id: string}) {
         
 
             <div className="flex flex-col m-3 py-0 px-4 gap-4 border-r-[5px] border-disabeld-btn md:max-w-[70dvw]">
-              <div className="text-[0.85rem] text-muted-foreground flex items-center gap-[0.8rem] font-rb">
-                <span className="create-time">
+              <div className="text-[0.85rem] text-muted-foreground flex items-center gap-[0.8rem] ">
+                <span className="font-aljaziraRegular text-base">
                   {showTime(poste?.createdAt)}
                 </span>
                 <span className="bar">|</span>
-                <span className="update-time">
+                <span className="font-aljaziraRegular text-base">
                   آخر تحديث : {showTimeDate(poste?.lasteUpdate)}
                 </span>
               </div>
               <SharePoste handelCopy={handelCopy} url={url} />
             </div>
-            <div className="p-3 leading-10 block font-noto text-[19px] text-gray-800 sm:min-w-[80dvw] lg:max-w-[60dvw] md:max-w-[70dvw]">
-              <p>{poste?.description}</p>
+            <div className="p-3 leading-10 block  text-[19px] text-gray-800 sm:min-w-[80dvw] lg:max-w-[60dvw] md:max-w-[70dvw]">
+              <p className="font-aljaziraRegular">{poste?.description}</p>
             </div>
             <div className="px-3 mt-4 grid grid-cols-mobile gap-[0.3rem] sm:grid-cols-tablet sm:gap-[0.4rem] lg:grid-cols-desktop w-full h-full">
               {poste?.images.map((image: { url: string; title: string }) => (

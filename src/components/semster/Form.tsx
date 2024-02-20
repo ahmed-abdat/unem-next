@@ -86,7 +86,7 @@ export default function Form() {
                   {
                     "focus-visible:ring-red-500": errors.matriculeNumber,
                   },
-                  "bg-white font-robo font-medium text-[1.35rem] placeholder:text-[1.1rem]  placeholder:font-rb py-5 placeholder-gray-400"
+                  "bg-white font-rubik font-medium text-[1.35rem] placeholder:text-[1.1rem]  placeholder:font-rb py-5 placeholder-gray-400"
                 )}
               />
               <SelectedSemester setOption={setSelectedSemester} option={"s1"} />

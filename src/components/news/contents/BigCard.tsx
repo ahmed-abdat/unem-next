@@ -44,10 +44,10 @@ export default function BigCards({
         <h3
           className={cn(
             {
-              "text-xl md:text-3xl font-rb md:mb-2": index === 0,
+              "text-xl md:text-3xl font-aljaziraBold md:mb-2": index === 0,
               "text-xl md:text-base": index !== 0,
             },
-            "font-tajawal font-semibold hover:underline"
+            "font-aljaziraBold font-bold hover:underline"
           )}
         >
           {card.title}
@@ -58,7 +58,7 @@ export default function BigCards({
               "md:text-lg": index === 0,
               "md:text-sm": index !== 0,
             },
-            " text-muted-foreground font-noto mt-1"
+            " text-muted-foreground font-aljaziraRegular mt-1"
           )}
         >
           {card.description.slice(0, 150)}

@@ -68,7 +68,7 @@ export default function WhatsappForm() {
             {
               "focus-visible:ring-red-500": errors.bacNumber,
             },
-            "bg-white font-robo font-medium text-[1.4rem] placeholder:text-[1.1rem]  placeholder:font-rb py-5 placeholder-gray-400"
+            "bg-white font-rubik font-medium text-[1.4rem] placeholder:text-[1.1rem]  placeholder:font-rb py-5 placeholder-gray-400"
           )}
         />
         {errors.bacNumber?.message && (

@@ -19,11 +19,10 @@ const config = {
     },
     extend: {
       fontFamily: {
-        robo: ['var(--font-roboto)'],
-        noto : ['var(--font-noto)'],
         tajawal: ['var(--font-tajawal)'],
+        aljaziraBold : ['var(--font-aljazira-bold)'],
+        aljaziraRegular : ['var(--font-aljazira-regular)'],
         rb : ['var(--font-rb)'],
-        vazir: ['var(--font-vazir)'],
       },
       colors: {
         'disabeld-btn' : '#58cc02',

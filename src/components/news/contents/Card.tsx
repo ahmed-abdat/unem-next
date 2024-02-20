@@ -24,7 +24,7 @@ export default function Card({
          <div className="flex justify-between gap-x-2">
           <h3 className={cn({
             
-          }, "font-tajawal font-semibold text-base hover:underline ")}>
+          }, "font-aljaziraBold font-semibold text-base hover:underline ")}>
             {card.title}
           </h3>
          <div className="cursor-pointer rounded-sm h-[100px] min-w-[130px]  max-w-full relative md:min-h-[150px] md:min-w-[200px]">
