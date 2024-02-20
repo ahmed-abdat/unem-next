@@ -1,7 +1,7 @@
 {
   "name": "unem",
   "short_name": "unem",
-  "theme_color": "#26a306",
+  "theme_color": "#f8f8f8",
   "background_color": "#f8f8f8",
   "display": "standalone",
   "orientation": "portrait",
