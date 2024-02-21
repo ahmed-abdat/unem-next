@@ -4,7 +4,7 @@ import {NewsnavLink} from '@/types/news-navbar'
 export const navLinks: NewsnavLink[] = [
     {
       title: "الرئيسية",
-      href: "/home",
+      href: "/",
     },
     {
       title: "الأخبار",

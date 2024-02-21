@@ -13,7 +13,7 @@ export default function Thumbnail({
 
   return (
     <>
-      <section className="w-full overflow-hidden p-0 max-h-full h-full md:max-w-[70dvw]">
+      <section className="w-full overflow-hidden p-0 max-h-full h-full md:max-w-[60dvw]">
         {videoUrl && (
           <ReactPlayer
             url={videoUrl}
@@ -28,7 +28,7 @@ export default function Thumbnail({
         )}
       </section>
       {!isReady && (
-        <div className="max-h-[412px] h-[300px] md:h-[420px] w-full overflow-hidden relative p-0 md:max-w-[70dvw]">
+        <div className="max-h-[412px] h-[300px] md:h-[420px] w-full overflow-hidden relative p-0 md:max-w-[60dvw]">
           <Image
             src={imageSrc}
             alt={"thumbnail"}

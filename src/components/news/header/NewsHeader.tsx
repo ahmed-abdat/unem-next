@@ -22,7 +22,7 @@ export default function NewsHeader() {
     <header
       className={` max-h-[60px] h-full sticky z-50 top-0 flex items-center gap-4 w-full p-4 bg-white justify-between`}
     >
-      <Link href="/home" aria-label="logo image" className='flex items-center justify-center'>
+      <Link href="/" aria-label="logo image" className='flex items-center justify-center'>
         <Image
           src={Logo}
           placeholder="blur"

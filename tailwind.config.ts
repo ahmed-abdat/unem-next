@@ -20,8 +20,7 @@ const config = {
     extend: {
       fontFamily: {
         tajawal: ['var(--font-tajawal)'],
-        aljaziraBold : ['var(--font-aljazira-bold)'],
-        aljaziraRegular : ['var(--font-aljazira-regular)'],
+        aljazira: ['var(--font-aljazira)'],
         rb : ['var(--font-rb)'],
       },
       colors: {
