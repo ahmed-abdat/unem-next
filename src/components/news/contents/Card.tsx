@@ -22,9 +22,7 @@ export default function Card({
     <>
       <CardContainer id={card.id} index={index}>
          <div className="flex justify-between gap-x-2">
-          <h3 className={cn({
-            
-          }, "font-aljazira font-semibold leading-normal text-base hover:underline ")}>
+          <h3 className="font-aljazira font-semibold leading-normal text-[1.25rem] hover:underline ">
             {card.title}
           </h3>
          <div className="cursor-pointer rounded-sm h-[100px] min-w-[130px]  max-w-full relative md:min-h-[150px] md:min-w-[200px]">
