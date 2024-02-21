@@ -74,7 +74,7 @@ function Poste({ poste , id } : { poste: DocumentData | null , id: string}) {
               <SharePoste handelCopy={handelCopy} url={url} />
             </div>
             <div className="p-3 leading-10 block  text-[19px] text-gray-800 sm:min-w-[60dvw] lg:max-w-[60dvw] md:max-w-[60dvw]">
-              <p className="font-aljazira font-normal text-[22px]">{poste?.description}</p>
+              <p className="font-aljazira font-normal">{poste?.description}</p>
             </div>
             <div className="px-3 mt-4 grid grid-cols-mobile gap-[0.3rem] sm:grid-cols-tablet sm:gap-[0.4rem] lg:grid-cols-desktop w-full h-full">
               {poste?.images.map((image: { url: string; title: string }) => (
