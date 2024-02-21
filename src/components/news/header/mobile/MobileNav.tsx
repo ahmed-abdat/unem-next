@@ -60,19 +60,12 @@ const MobileNav = () => {
 
   return (
     <>
-       <button
-        type="button"
-        className="cursor-pointer relative -m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-900"
-        aria-label="Open menu"
-      >
-        <Menu className="h-8 w-8" aria-hidden="true" />
-      </button>
       <div className="relative z-40 lg:hidden">
         <div className="fixed inset-0 bg-black bg-opacity-25" />
       </div>
 
-      <div className="fixed overflow-y-scroll overscroll-y-none inset-0 z-40 flex">
-        <div className="w-[90%] sm:min-w-sm flex">
+      <div className="fixed overflow-hidden inset-0 z-40 flex">
+        <div className="w-[95%] sm:min-w-sm flex">
           <div
             className="relative flex w-full max-w-full md:max-w-sm flex-col overflow-y-auto bg-white pb-12 shadow-xl"
             ref={navRef}
