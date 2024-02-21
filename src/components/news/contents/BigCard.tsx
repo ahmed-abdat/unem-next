@@ -58,7 +58,7 @@ export default function BigCards({
               "md:text-lg": index === 0,
               "md:text-sm": index !== 0,
             },
-            " text-muted-foreground font-aljazira mt-1"
+            " text-muted-foreground font-aljazira font-normal mt-2"
           )}
         >
           {card.description.slice(0, 150)}

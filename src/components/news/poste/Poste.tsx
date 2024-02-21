@@ -63,11 +63,11 @@ function Poste({ poste , id } : { poste: DocumentData | null , id: string}) {
 
             <div className="flex flex-col m-3 py-0 px-4 gap-4 border-r-[5px] border-disabeld-btn md:max-w-[60dvw]">
               <div className="text-[0.85rem] text-muted-foreground flex items-center gap-[0.8rem] ">
-                <span className="font-aljazira text-base">
+                <span className="font-aljazira ">
                   {showTime(poste?.createdAt)}
                 </span>
                 <span className="bar">|</span>
-                <span className="font-aljazira text-base">
+                <span className="font-aljazira ">
                   آخر تحديث : {showTimeDate(poste?.lasteUpdate)}
                 </span>
               </div>
