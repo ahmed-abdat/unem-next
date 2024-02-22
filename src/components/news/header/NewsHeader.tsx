@@ -50,10 +50,10 @@ export default function NewsHeader() {
         aria-label="login"
         asChild
       >
-        <Link href="#">تسجيل الدخول</Link>
+        <Link href="/register">تسجيل الدخول</Link>
       </Button>
       <div className="flex items-center gap-x-4 lg:hidden">
-        <Link href="#" aria-label="login">
+        <Link href="/register" aria-label="login">
           <CircleUserRound className="w-8 h-8 cursor-pointer" />
         </Link>
         <MobileNav />

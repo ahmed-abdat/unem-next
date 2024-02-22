@@ -1,5 +1,5 @@
 import localFont from "next/font/local";
-import { Tajawal, Rubik, Baloo_Bhaijaan_2 } from "next/font/google";
+import { Tajawal, Roboto } from "next/font/google";
 
 export const RB = localFont({
   src: "./RB-Regular.ttf",
@@ -35,4 +35,11 @@ export const tajawal = Tajawal({
   subsets: ["arabic"],
   variable: "--font-tajawal",
   fallback: ["system-ui", "arial"],
+});
+
+
+export const roboto = Roboto({
+  weight: ["400", "500", "700"],
+  subsets: ["latin"],
+  variable: "--font-roboto",
 });

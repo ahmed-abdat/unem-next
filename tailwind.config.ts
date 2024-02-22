@@ -21,6 +21,7 @@ const config = {
       fontFamily: {
         tajawal: ['var(--font-tajawal)'],
         aljazira: ['var(--font-aljazira)'],
+        roboto : ['var(--font-roboto)'],
         rb : ['var(--font-rb)'],
       },
       colors: {
