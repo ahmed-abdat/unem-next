@@ -4,7 +4,7 @@ import {tajawal , Aljazira} from '@/app/font/font'
 import { Toaster } from "sonner";
 import "./globals.css";
 
-export const revalidate = 120;
+
 
 export const metadata: Metadata = {
   metadataBase : new URL('https://unem2000.com'),
