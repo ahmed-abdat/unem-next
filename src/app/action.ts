@@ -15,7 +15,7 @@ import { cache } from 'react'
 
 const firestore = getFirestore(app);
 
-export const getPoste = cache(async (id: string | null) => {
+export const getPoste = async (id: string | null) => {
   if (!id) return { poste: null };
   const docRef = doc(firestore, "postes", id);
   try {
@@ -38,7 +38,8 @@ export const getPoste = cache(async (id: string | null) => {
     console.log(error);
     return { poste: null };
   }
-})
+}
+
 
 export const fetchPostes = async () => {
   try {

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 };
 
 
-export const revalidate = 120;
+
 
 export default async function NewsPostes() {
   const { postes, lastDocId } = await fetchPostes();
