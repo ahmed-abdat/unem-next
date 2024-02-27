@@ -28,7 +28,7 @@ export default function BigCards({
           'md:h-0' : index !== 0,
         }, "absolute -bottom-1 right-10 w-16 z-20 h-2 bg-news-border")}></span>
         <Image
-          src={card.images[0]?.url}
+          src={card?.thumbnail?.url ?? card.images[0].url}
           alt={card.title}
           className="object-cover relative"
           fill
@@ -61,7 +61,7 @@ export default function BigCards({
             " text-muted-foreground font-aljazira font-medium mt-2"
           )}
         >
-          {card.description.slice(0, 150)}
+          {card.discribtion?.slice(0, 160)}
         </p>
       </div>
       <Separator className="mb-6 md:mb-4 md:hidden" />

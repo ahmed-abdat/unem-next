@@ -27,7 +27,7 @@ export default function Card({
           </h3>
          <div className="cursor-pointer rounded-sm h-[100px] min-w-[130px]  max-w-full relative md:min-h-[150px] md:min-w-[200px]">
           <Image
-            src={card.images[0]?.url}
+            src={card?.thumbnail?.url ?? card.images[0].url}
             alt={card.title}
             className="object-cover relative"
             sizes="(max-width: 768px) 90vw, (max-width: 1200px) 50vw, 30vw"
