@@ -11,6 +11,9 @@ export default function Thumbnail({
 }) {
   const [isReady, setIsReady] = useState(false);
 
+  console.log("videoUrl", videoUrl);
+  
+
   return (
     <>
       <section className="w-full overflow-hidden p-0 max-h-full h-full md:max-w-[60dvw]">
