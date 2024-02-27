@@ -57,7 +57,7 @@ function Poste({ poste , id } : { poste: DocumentData | null , id: string}) {
               </h1>
             </div>   
             {
-              isClient ? <Thumbnail imageSrc={poste?.thumbnail?.url ?? poste?.images[0].url} videoUrl={poste?.videoUrl} /> : <Skeleton className="w-full h-[300px] md:max-w-[70dvw]" />
+              isClient ? <Thumbnail imageSrc={poste?.thumbnail?.url ?? poste?.images[0].url} videoUrl={poste?.videoURL} /> : <Skeleton className="w-full h-[300px] md:max-w-[70dvw]" />
             }
         
 
