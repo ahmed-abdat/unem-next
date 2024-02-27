@@ -14,7 +14,7 @@ export type Thumbnail = {
 export interface NewsPoste {
   title: string;
   discribtion: string;
-  images: imagePoste[];
+  images: image[];
   videoURL?: string | null;
   thumbnail: Thumbnail;
   createdAt: Timestamp;
