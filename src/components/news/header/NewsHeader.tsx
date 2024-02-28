@@ -13,16 +13,17 @@ import Link from "next/link";
 import MobileNav from "@/components/news/header/mobile/MobileNav";
 
 export default function NewsHeader() {
-
-  const aboutLink =    {
+  const aboutLink = {
     title: "من نحن",
     href: "/about",
-  }
+  };
   return (
-    <header
-      className="max-h-[60px] h-full sticky z-50 top-0 flex items-center gap-4 w-full p-4 bg-primary-color text-white justify-between"
-    >
-      <Link href="/" aria-label="logo image" className='flex items-center justify-center'>
+    <header className="max-h-[60px] h-full sticky z-50 top-0 flex items-center gap-4 w-full p-4 bg-primary-color text-white justify-between">
+      <Link
+        href="/"
+        aria-label="logo image"
+        className="flex items-center justify-center"
+      >
         <Image
           src={Logo}
           placeholder="blur"
@@ -34,7 +35,11 @@ export default function NewsHeader() {
       </Link>
       <div className="items-center justify-start gap-2 w-full hidden lg:flex">
         {navLinks.map((navLink) => (
-          <NavButton navLink={navLink} key={navLink.title} className="font-tajawal font-medium text-base" />
+          <NavButton
+            navLink={navLink}
+            key={navLink.title}
+            className="font-tajawal font-medium text-base"
+          />
         ))}
 
         <NavigationMenue navMenu={MenuLinks} isAccademic>
@@ -43,10 +48,13 @@ export default function NewsHeader() {
         <NavigationMenue navMenu={newsMenuLinks} mainRoute="institutions">
           مؤسسات التعليم العالي
         </NavigationMenue>
-        <NavButton navLink={aboutLink} className="font-tajawal font-medium text-base" />
+        <NavButton
+          navLink={aboutLink}
+          className="font-tajawal font-medium text-base"
+        />
       </div>
       <Button
-        className="font-rb py-5 hidden lg:flex bg-disabeld-btn text-gray-800 hover:bg-btn hover:text-white transition-all duration-75"
+        className="font-rb py-5 hidden lg:flex bg-disabeld-btn text-white hover:bg-btn-hover hover:text-white transition-all duration-75"
         aria-label="login"
         asChild
       >

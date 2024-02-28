@@ -29,6 +29,7 @@ const config = {
         'news-border' : '#13c867',
         'whtssap-label' : '#077038',
         'btn' : '#58cc02',
+        'btn-hover' : '#4dac05',
         'primary-color' : '#26a306',
         'main' : '#f8f8f8',
         'green-1': '#186a02',
