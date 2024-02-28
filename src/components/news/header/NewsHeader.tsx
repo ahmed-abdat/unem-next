@@ -46,7 +46,7 @@ export default function NewsHeader() {
         <NavButton navLink={aboutLink} className="font-tajawal font-medium text-base" />
       </div>
       <Button
-        className="font-rb py-5 hidden lg:flex bg-gray-100 text-gray-800 hover:bg-btn hover:text-white transition-all duration-75"
+        className="font-rb py-5 hidden lg:flex bg-disabeld-btn text-gray-800 hover:bg-btn hover:text-white transition-all duration-75"
         aria-label="login"
         asChild
       >
