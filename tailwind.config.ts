@@ -25,7 +25,7 @@ const config = {
         rb : ['var(--font-rb)'],
       },
       colors: {
-        'disabeld-btn' : '#58cc02',
+        'disabeld-btn' : '#58cc10',
         'news-border' : '#13c867',
         'whtssap-label' : '#077038',
         'btn' : '#58cc02',

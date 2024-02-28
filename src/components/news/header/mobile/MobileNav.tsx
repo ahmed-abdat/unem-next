@@ -46,7 +46,7 @@ const MobileNav = () => {
       <button
         type="button"
         onClick={() => setIsOpen(true)}
-        className="cursor-pointer relative -m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-900"
+        className="cursor-pointer relative -m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-100"
         aria-label="Open menu"
       >
         <Menu className="h-8 w-8" aria-hidden="true" />
@@ -87,7 +87,7 @@ const MobileNav = () => {
                     className="w-full flex items-center justify-center"
                     key={navLink.title}
                   >
-                    <NavButton navLink={navLink} className="w-[90%]" />
+                    <NavButton navLink={navLink} className="w-[90%] text-black transition-all duration-75" />
                   </li>
                 ))}
               </ul>
@@ -103,7 +103,7 @@ const MobileNav = () => {
               </MobileMenu>
               </div>
               <div className="flex items-center justify-center w-full my-4">
-              <NavButton navLink={aboutLink} className="w-[90%]" />
+              <NavButton navLink={aboutLink} className="w-[90%] text-black transition-all duration-75" />
               </div>
               <MobileNavUser closeOnCurrent={closeOnCurrent} />
             </div>

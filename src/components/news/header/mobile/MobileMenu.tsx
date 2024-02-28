@@ -18,17 +18,17 @@ export function MobileMenu({
   mainRoute?: string;
 }) {
   return (
-    <Accordion type="single" collapsible className="w-[90%]">
+    <Accordion type="single" collapsible className="w-[90%] text-black">
      
       <AccordionItem value={mainRoute ? mainRoute : 'item'}>
         <AccordionTrigger>{children}</AccordionTrigger>
         <AccordionContent>
-          <div className='flex flex-col gap-y-2'>
+          <div className='flex flex-col gap-y-2 text-black'>
           {
             navMenu.map((navItem) => {
               return (
-                <Button asChild variant={"ghost"} key={navItem.title} aria-label={navItem.title}>
-                  <Link href={mainRoute ? `${mainRoute}/${navItem.href}` : navItem.href}>
+                <Button asChild variant={"ghost"} key={navItem.title} aria-label={navItem.title} className="text-black hover:bg-disabeld-btn hover:text-white focus:text-white transition-all duration-75">
+                  <Link href={mainRoute ? `${mainRoute}/${navItem.href}` : navItem.href} className="text-black">
                     {navItem.title}
                   </Link>
                 </Button>

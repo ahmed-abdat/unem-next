@@ -20,7 +20,7 @@ export default function NewsHeader() {
   }
   return (
     <header
-      className={` max-h-[60px] h-full sticky z-50 top-0 flex items-center gap-4 w-full p-4 bg-white justify-between`}
+      className="max-h-[60px] h-full sticky z-50 top-0 flex items-center gap-4 w-full p-4 bg-primary-color text-white justify-between"
     >
       <Link href="/" aria-label="logo image" className='flex items-center justify-center'>
         <Image
@@ -46,15 +46,15 @@ export default function NewsHeader() {
         <NavButton navLink={aboutLink} className="font-tajawal font-medium text-base" />
       </div>
       <Button
-        className="font-rb py-5 hidden lg:flex"
+        className="font-rb py-5 hidden lg:flex bg-gray-100 text-gray-800 hover:bg-btn hover:text-white transition-all duration-75"
         aria-label="login"
         asChild
       >
-        <Link href="/register">تسجيل الدخول</Link>
+        <Link href="#">تسجيل الدخول</Link>
       </Button>
       <div className="flex items-center gap-x-4 lg:hidden">
-        <Link href="/register" aria-label="login">
-          <CircleUserRound className="w-8 h-8 cursor-pointer" />
+        <Link href="#" aria-label="login">
+          <CircleUserRound className="w-8 h-8 cursor-pointer text-gray-100" />
         </Link>
         <MobileNav />
       </div>

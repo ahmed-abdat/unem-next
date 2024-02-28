@@ -21,13 +21,16 @@ import {
     congrateText?: string;
     subText?: string;
   }) {
+
+
+    
     return (
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         {/* <DialogTrigger>Open</DialogTrigger> */}
         <DialogContent
           className={cn(
             {
-              "bg-green-300": moyenGenerale && moyenGenerale > 10,
+              "bg-green-300": moyenGenerale && moyenGenerale >= 10,
             },
             "max-w-[95%] sm:max-w-[65%] md:max-w-[50%] lg:max-w-[40%] rounded-lg"
           )}
@@ -46,22 +49,28 @@ import {
                 {
                   moyenGenerale && moyenGenerale <= 10 ? <span> {subText || 'معدلك التوجيهي هو'} </span>  :  moyenGenerale && moyenGenerale > 10 && <>
                   <span> {congrateText || 'مبروك معدلك التوجيهي هو'}</span>
-                  <Image src="/conngrat.gif" width={85} height={100} className='flex items-center justify-center object-cover transform rotate-[93deg] h-[100px] w-[85px] ' alt="congratilation"/>
+                  
                   </>
                 }
         
               </h2>
+              <div className="flex items-center justify-center gap-x-2">
+              <Image src="/conngrat.gif" width={85} height={100} className='flex items-center justify-center object-cover transform rotate-[270deg] h-[100px] w-[85px] ' alt="congratilation"/>
               <h3
                 className={cn(
                   {
-                    "text-green-800": moyenGenerale && moyenGenerale > 10,
+                    "text-green-800": moyenGenerale && moyenGenerale >= 10,
                     "text-gray-600": moyenGenerale && moyenGenerale < 10,
+                    'text-9xl' : moyenGenerale && String(moyenGenerale).length === 2,
+                    'text-8xl' : moyenGenerale && String(moyenGenerale).length >= 3,
                   },
-                  "font-robo font-semibold text-9xl  py-4 text-center"
+                  "font-robo font-semibold  py-4 text-center"
                 )}
               >
                 {moyenGenerale}
               </h3>
+              <Image src="/conngrat.gif" width={85} height={100} className='flex items-center justify-center object-cover transform rotate-[0deg] h-[100px] w-[85px] ' alt="congratilation"/>
+              </div>
   
             </DialogDescription>
           </DialogHeader>
