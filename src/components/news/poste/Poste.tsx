@@ -52,7 +52,7 @@ function Poste({ poste , id } : { poste: DocumentData | null , id: string}) {
           </Dialoge>
           <section className="pt-6 bg-white min-h-[85dvh] sm:py-[20px] sm:px-4 ">
             <div className=" md:max-w-[60dvw]">
-              <h1 className="font-aljazira font-bold leading-normal text-[1.625rem] md:text-[2.5rem] md:leading-normal pb-2">
+              <h1 className="font-aljazira font-bold leading-normal text-[1.625rem] md:text-[2rem] lg:text-4xl md:leading-normal pb-2 md:pb-4">
                 {poste?.title}
               </h1>
             </div>   
