@@ -61,7 +61,7 @@ export default function BigCards({
             " text-muted-foreground font-aljazira font-medium mt-2"
           )}
         >
-          {card.discribtion?.slice(0, 160)}
+          {card?.summary || card.discribtion?.slice(0, 160) + "..."}
         </p>
       </div>
       <Separator className="mb-6 md:mb-4 md:hidden" />

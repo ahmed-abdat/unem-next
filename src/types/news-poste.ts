@@ -16,6 +16,7 @@ export interface NewsPoste {
   discribtion: string;
   images: image[];
   videoURL?: string | null;
+  summary?: string | null;
   thumbnail: Thumbnail;
   createdAt: Timestamp;
   lasteUpdate : Timestamp;
