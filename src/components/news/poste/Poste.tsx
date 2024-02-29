@@ -11,10 +11,14 @@ import { DocumentData } from "firebase/firestore/lite";
 import { Separator } from "@/components/ui/separator";
 import Thumbnail from "@/components/news/poste/Thumbnail";
 import { Skeleton } from "@/components/ui/skeleton";
+import { usePathname } from "next/navigation";
 function Poste({ poste , id } : { poste: DocumentData | null , id: string}) {
   const [isImageSelected, setIsImageSelected] = useState(false);
   const [image, setImage] = useState<string | null>(null);
   const [isClient , setIsClient] = useState(false);
+
+  const path = usePathname();
+  
 
 
   useEffect(() => {
@@ -22,7 +26,7 @@ function Poste({ poste , id } : { poste: DocumentData | null , id: string}) {
   },[]);
 
 
-  const url = `https://unem.vercel.app/news/${id}`;
+  const url = `https://unem2000.com/${path == 'student-space/' ? 'student-space' : ''}${id}`;
   const handelCopy = () => {
     navigator.clipboard.writeText(url);
     toast.success("تم نسخ الرابط بنجاح");
