@@ -11,13 +11,13 @@ import {
   doc,
   getDoc,
 } from "firebase/firestore/lite";
-import { cache } from 'react'
+
 
 const firestore = getFirestore(app);
 
-export const getPoste = async (id: string | null) => {
+export const getPoste = async (id: string | null , collectionName : string = 'postes') => {
   if (!id) return { poste: null };
-  const docRef = doc(firestore, "postes", id);
+  const docRef = doc(firestore, collectionName, id);
   try {
     const docSnap = await getDoc(docRef);
     if (docSnap.exists()) {
@@ -41,10 +41,11 @@ export const getPoste = async (id: string | null) => {
 }
 
 
-export const fetchPostes = async () => {
+export const fetchPostes = async (collectionName : string = 'postes') => {
+  const numberOfPostes = 10;
   try {
     const q = query(
-      collection(firestore, "postes"),
+      collection(firestore, collectionName),
       orderBy("createdAt", "desc"),
       limit(10)
     );
@@ -57,12 +58,11 @@ export const fetchPostes = async () => {
 
     if (postes.length === 0 ) return { postes: [], lastDocId: null };
 
-    if(postes.length <= 9){
+    if (postes.length < numberOfPostes) {
       return { postes, lastDocId: null };
     }
     
     
-
     const lastDocId = snapshot.docs[snapshot.docs.length - 1].id;
     return { postes, lastDocId };
   } catch (error) {
@@ -73,10 +73,13 @@ export const fetchPostes = async () => {
 
 export const fetchMorePostes = async ({
   lastDocId,
+  collectionName = 'postes'
 }: {
   lastDocId: string | null;
-}) => {
+  collectionName?: string;
+}): Promise<{ otherPostes: NewsPoste[]; id: null | string }> => {
   console.log("fetchMorePostes");
+  const numberOfPostesToFetch = 6;
   let id: string | null = lastDocId;
   if(!lastDocId) return { otherPostes: [], id: null };
 
@@ -84,10 +87,10 @@ export const fetchMorePostes = async ({
     const { docSnap } = await getPoste(lastDocId as string);
 
     const q = query(
-      collection(firestore, "postes"),
+      collection(firestore, collectionName),
       orderBy("createdAt", "desc"),
       startAfter(docSnap),
-      limit(8)
+      limit(numberOfPostesToFetch)
     );
     const querySnapshot = await getDocs(q);
     let otherposte: NewsPoste[] = [];
@@ -98,7 +101,7 @@ export const fetchMorePostes = async ({
 
     id = querySnapshot.docs[querySnapshot.docs.length - 1].id;
     const docsLength = querySnapshot.size;
-    if (docsLength < 4) {
+    if (docsLength < numberOfPostesToFetch) {
       id = null;
     }
     return { otherPostes: otherposte, id };
@@ -110,9 +113,9 @@ export const fetchMorePostes = async ({
 
 
 // get all postes
-export const getAllPostes = async () => {
+export const getAllPostes = async (collectionName : string = 'postes') => {
   const q = query(
-    collection(firestore, "postes"),
+    collection(firestore, collectionName),
     orderBy("createdAt", "desc")
   );
   const snapshot = await getDocs(q);
