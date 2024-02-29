@@ -21,7 +21,7 @@ export default async function NewsPostes() {
   return (
     <>
     <NewsHeader />
-      <section className={`${Aljazira.className} flex items-center gap-x-4 pt-0 flex-col bg-white sm:pt-5 md:pt-6`}>
+      <section className={`${Aljazira.className} flex items-center gap-x-4 pt-0 flex-col bg-white sm:pt-3 md:pt-4`}>
         <Postes postes={postes} />
         <LoadMore lastDocId={lastDocId} />
         <Separator />
