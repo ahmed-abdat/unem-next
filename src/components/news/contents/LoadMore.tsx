@@ -39,7 +39,7 @@ export default function InView({
     if (inView && lastDocID) {
       fetchMore(lastDocID);
     }
-  }, [inView, lastDocID, postes]);
+  }, [inView, lastDocID, postes , isStudent]);
 
   return (
     <>

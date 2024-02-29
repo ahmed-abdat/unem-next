@@ -26,7 +26,8 @@ function Poste({ poste , id } : { poste: DocumentData | null , id: string}) {
   },[]);
 
 
-  const url = `https://unem2000.com/${path == 'student-space' ? 'student-space/' : 'news/'}${id}`;
+  const url = `https://unem2000.com/${path.startsWith('/student-space') ? 'student-space/' : 'news/'}${id}`;
+  
   const handelCopy = () => {
     navigator.clipboard.writeText(url);
     toast.success("تم نسخ الرابط بنجاح");
