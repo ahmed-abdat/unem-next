@@ -27,7 +27,6 @@ export async function generateMetadata({ params} : PosteProps) {
       siteName: 'unem',
       type: 'website',
       locale: 'ar_MA',
-
       Images : [
         {
           url: poste?.thumbnail?.url || poste?.images[0].url,

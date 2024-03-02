@@ -16,20 +16,17 @@ export default async function og({ params }: { params: { postId: string } }) {
 
   return new ImageResponse(
     (
-      <div tw="relative flex w-full flex items-center justify-center">
+        <div tw="relative flex w-full flex items-center justify-center">
         {/* background */}
         <div tw="absolute flex inset-0">
           <img
-            src={poste?.thumbnail?.url + '&w=1200&h=630&auto=format&q=75' || poste?.images[0].url + '&w=1200&h=630&auto=format&q=75' }
+            src={poste?.thumbnail?.url || poste?.images[0].url || "/logo.png"}
             alt={poste?.title}
             tw="flex flex-1"
           />
           {/* Overly */}
-          <div tw='absolute flex inset-0 bg-black bg-opacity-50'>
-          </div>
-          <div tw='flex flex-col text-neutral-50'>
-            {/* title */}
-            <div tw='text=7xl font-bold'>{poste?.title}</div>
+          <div tw='absolute -bottom-100 w-full text-cetner flex bg-black opacity-80 text-white'> 
+          <h2 tw='flex text-center w-full text-white '> {poste?.title} </h2>
           </div>
         </div>
       </div>
