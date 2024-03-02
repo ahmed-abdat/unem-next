@@ -18,7 +18,7 @@ export async function generateMetadata({ params} : PosteProps) {
 
     app : {
       name: 'unem',
-      url: 'https://uneme.vercel.app',
+      url: 'https://unem2000.com',
     },
     openGraph: {
       title: `unem - ${poste?.title}`,
@@ -42,7 +42,6 @@ export async function generateMetadata({ params} : PosteProps) {
       cardType: 'summary_large_image',
       site: '@unem',
       handle: '@unem',
-      image: poste?.thumbnail?.url || poste?.images[0].url,
       images : [poste?.thumbnail?.url || poste?.images[0].url],
     },
   };
