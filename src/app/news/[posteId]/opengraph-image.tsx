@@ -16,19 +16,8 @@ export default async function og({ params }: { params: { postId: string } }) {
 
   return new ImageResponse(
     (
-        <div tw="relative flex w-full flex items-center justify-center">
-        {/* background */}
-        <div tw="absolute flex inset-0">
-          <img
-            src={poste?.thumbnail?.url || poste?.images[0].url || "/logo.png"}
-            alt={poste?.title}
-            tw="flex flex-1"
-          />
-          {/* Overly */}
-          <div tw='absolute -bottom-100 w-full text-cetner flex bg-black opacity-80 text-white'> 
-          <h2 tw='flex text-center w-full text-white '> {poste?.title} </h2>
-          </div>
-        </div>
+        <div tw="relative flex w-full flex items-center justify-center bg-gradient-main from-green-1 to-green-2">
+          <h2 tw='flex text-center w-full text-white text-7xl'> {poste?.title || 'الاتحاد الوطني'} </h2>
       </div>
     ),
     {
