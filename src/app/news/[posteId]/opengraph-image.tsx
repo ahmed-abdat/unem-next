@@ -33,6 +33,7 @@ export default async function og({ params } : { params: { postId: string } }) {
             </div>
           </div>
         </div>
+        <img tw="w-full h-96 object-cover object-center" src={poste?.thumbnail?.url || poste?.images[0].url} alt={poste.title} />
       </div>
     ),
     {
