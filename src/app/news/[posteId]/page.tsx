@@ -30,7 +30,7 @@ export async function generateMetadata({ params} : PosteProps) {
 
       Images : [
         {
-          url: poste?.images[0].url,
+          url: poste?.thumbnail?.url || poste?.images[0].url,
           width: 1260,
           height: 800,
           alt: `unem - ${poste?.title}`,
