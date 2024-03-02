@@ -20,7 +20,7 @@ export default async function og({ params }: { params: { postId: string } }) {
         {/* background */}
         <div tw="absolute flex inset-0">
           <img
-            src={poste?.thumbnail?.url || poste?.images[0].url || "/logo.jpg"}
+            src={poste?.thumbnail?.url + '&w=1200&h=630&auto=format&q=75' || poste?.images[0].url + '&w=1200&h=630&auto=format&q=75' }
             alt={poste?.title}
             tw="flex flex-1"
           />
