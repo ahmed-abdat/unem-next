@@ -37,6 +37,15 @@ export async function generateMetadata({ params} : PosteProps) {
         }
       ]
     },
+    twitter: {
+      title : `unem - ${poste?.title}`,
+      description: `الاتحاد الوطني لطلبة موريتانيا - الكليات - ${poste?.title}`,
+      cardType: 'summary_large_image',
+      site: '@unem',
+      handle: '@unem',
+      image: poste?.thumbnail?.url || poste?.images[0].url,
+      images : [poste?.thumbnail?.url || poste?.images[0].url],
+    },
   };
 }
 
