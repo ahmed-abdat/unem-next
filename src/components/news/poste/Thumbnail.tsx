@@ -29,7 +29,7 @@ export default function Thumbnail({
         )}
       </section>
       {!isReady && (
-        <div className="max-h-[500px] h-[420px] md:h-[480px] w-full overflow-hidden relative p-0 md:max-w-[60dvw]">
+        <div className="max-h-[480px] h-[400px] md:h-[500px] w-full overflow-hidden relative p-0 md:max-w-[60dvw]">
           <Image
             src={imageSrc}
             alt={"thumbnail"}
