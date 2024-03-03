@@ -1,5 +1,6 @@
 import { getPoste } from "@/app/action";
 import { ImageResponse } from "next/og";
+import { Aljazira } from "@/app/font/font";
 
 export const runtime = "edge";
 
@@ -10,8 +11,12 @@ export const size = {
 };
 
 export default async function og({ params }: { params: { slug: string } }) {
+  // Font
+  const aljezira = fetch(
+    new URL("../../font/Al-Jazeera-Bold.woff2", import.meta.url)
+  ).then((res) => res.arrayBuffer());
   const { slug } = params;
-  const { poste } = await getPoste(slug , "student-space");
+  const { poste } = await getPoste(slug, "student-space");
 
   return new ImageResponse(
     (
@@ -32,7 +37,14 @@ export default async function og({ params }: { params: { slug: string } }) {
           src="https://unem2000.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.ae793647.png&w=64&q=75"
           style={{ width: 300, height: 300 }}
         />
-        <div style={{ marginTop: 10, display: "flex", width: "80%", height : '100%' }}>
+        <div
+          style={{
+            marginTop: 10,
+            display: "flex",
+            width: "80%",
+            height: "100%",
+          }}
+        >
           <p
             style={{
               fontSize: 32,
@@ -44,13 +56,21 @@ export default async function og({ params }: { params: { slug: string } }) {
               fontWeight: 600,
             }}
           >
-            {poste?.title || 'الاتحاد الوطني لطلبة موريتانيا'}
+            {poste?.title || "الاتحاد الوطني لطلبة موريتانيا"}
           </p>
         </div>
       </div>
     ),
     {
       ...size,
+      fonts: [
+        {
+          name: "Aljazira",
+          data: await aljezira,
+          style: "normal",
+          weight: 600,
+        },
+      ],
     }
   );
 }

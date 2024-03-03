@@ -10,6 +10,10 @@ export const size = {
 };
 
 export default async function og({ params }: { params: { postId: string } }) {
+    // Font
+    const aljezira = fetch(
+      new URL("../../font/Al-Jazeera-Bold.woff2", import.meta.url)
+    ).then((res) => res.arrayBuffer());
   const { postId } = params;
   const { poste } = await getPoste(postId);
 
@@ -51,6 +55,14 @@ export default async function og({ params }: { params: { postId: string } }) {
     ),
     {
       ...size,
+      fonts: [
+        {
+          name: "Aljazira",
+          data: await aljezira,
+          style: "normal",
+          weight: 600,
+        },
+      ],
     }
   );
 }
