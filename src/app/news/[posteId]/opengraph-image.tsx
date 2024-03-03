@@ -32,7 +32,7 @@ export default async function og({ params }: { params: { postId: string } }) {
           src="https://unem2000.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.ae793647.png&w=64&q=75"
           style={{ width: 300, height: 300 }}
         />
-        <div style={{ marginTop: 10, display: "flex", width: "80%" }}>
+        <div style={{ marginTop: 10, display: "flex", width: "80%", height : '100%' }}>
           <p
             style={{
               fontSize: 32,
