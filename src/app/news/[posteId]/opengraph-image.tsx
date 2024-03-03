@@ -15,9 +15,22 @@ export default async function og({ params }: { params: { postId: string } }) {
 
   return new ImageResponse(
     (
-        <div tw="relative flex w-full flex items-center justify-center bg-gradient-main from-green-1 to-green-2">
-          <h2 tw='flex text-center w-full text-white text-7xl'> {poste?.title || 'الاتحاد الوطني'} </h2>
-      </div>
+      <div
+      style={{
+        height: '100%',
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor: '#fff',
+        fontSize: 32,
+        fontWeight: 600,
+      }}
+    >
+      <img src='/logo.png' style={{ width: 100, height: 100 }} />
+      <div style={{ marginTop: 40 }}>{poste?.title}</div>
+    </div>
     ),
     {
       ...size,
