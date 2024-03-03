@@ -35,12 +35,13 @@ export default async function og({ params }: { params: { postId: string } }) {
         <div style={{ marginTop: 10, display: "flex", width: "80%" }}>
           <p
             style={{
-              fontSize: "1rem",
+              fontSize: 32,
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               textAlign: "center",
               color: "#000",
+              fontWeight: 600,
             }}
           >
             {poste?.title}{" "}
