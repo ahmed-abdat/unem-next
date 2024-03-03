@@ -40,6 +40,7 @@ export default async function og({ params }: { params: { postId: string } }) {
               alignItems: "center",
               justifyContent: "center",
               textAlign: "center",
+              color: "#000",
             }}
           >
             {poste?.title}{" "}
