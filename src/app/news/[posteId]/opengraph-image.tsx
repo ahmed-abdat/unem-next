@@ -29,6 +29,10 @@ export default async function og({ params }: { params: { postId: string } }) {
         alignItems: "flex-start",
         justifyContent: "center",
         backgroundImage: `url(${poste?.thumbnail?.url || poste?.images[0].url})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundColor: "#000",
       }}
     >
       <div
