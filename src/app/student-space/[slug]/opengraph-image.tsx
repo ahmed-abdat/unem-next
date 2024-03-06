@@ -21,45 +21,37 @@ export default async function og({ params }: { params: { slug: string } }) {
   return new ImageResponse(
     (
       <div
+      style={{
+        height: "100%",
+        width: "100%",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "flex-start",
+        justifyContent: "center",
+        backgroundImage: `url(${poste?.thumbnail?.url || poste?.images[0].url})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundColor: "#000",
+      }}
+    >
+      <div
         style={{
-          height: "100%",
-          width: "100%",
+          marginLeft: 190,
+          marginRight: 190,
           display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          backgroundColor: "#fff",
-          fontSize: 30,
-          fontWeight: 600,
+          fontSize: 140,
+          fontFamily: "Outfit",
+          letterSpacing: "-0.05em",
+          fontStyle: "normal",
+          color: "white",
+          lineHeight: "120px",
+          whiteSpace: "pre-wrap",
         }}
       >
-        <img
-          src="https://unem2000.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.ae793647.png&w=64&q=75"
-          style={{ width: 300, height: 300 }}
-        />
-        <div
-          style={{
-            marginTop: 10,
-            display: "flex",
-            width: "80%",
-            height: "100%",
-          }}
-        >
-          <p
-            style={{
-              fontSize: 32,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-              color: "#000",
-              fontWeight: 600,
-            }}
-          >
-            {poste?.title || "الاتحاد الوطني لطلبة موريتانيا"}
-          </p>
-        </div>
+        {poste?.title || "الاتحاد الوطني لطلبة موريتانيا"}
       </div>
+    </div>
     ),
     {
       ...size,

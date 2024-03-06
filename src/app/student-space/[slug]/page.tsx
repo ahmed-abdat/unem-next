@@ -21,21 +21,23 @@ export async function generateMetadata({ params} : PosteProps) {
       url: 'https://uneme.vercel.app',
     },
     openGraph: {
-      title: `unem - ${poste?.title}`,
-      description: `الاتحاد الوطني لطلبة موريتانيا - الكليات - ${poste?.title}`,
-      url : `/${poste?.id}`,
-      siteName: 'unem',
-      type: 'website',
-      locale: 'ar_MA',
-
-      Images : [
+      title : `unem - ${poste?.title}`,
+      description: `الاتحاد الوطني لطلبة موريتانيا - مساحة الطالب - ${poste?.title}`,
+      url: 'https://unem2000.com',
+      siteName: 'unem2000',
+      images: [
         {
-          url: poste?.images[0].url,
-          width: 1260,
-          height: 800,
-          alt: `unem - ${poste?.title}`,
-        }
-      ]
+          url: poste?.thumbnail?.url || poste?.images[0].url, // Dynamic og route
+          width: 800,
+          height: 600,
+        },
+        {
+          url: poste?.images[0].url, // Dynamic og route
+          width: 1800,
+          height: 1600,
+          alt: poste?.thumbnail?.name || poste?.images[0].name,
+        },
+      ],
     },
   };
 }

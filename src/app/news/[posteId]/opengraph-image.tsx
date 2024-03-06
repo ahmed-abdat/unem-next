@@ -16,7 +16,6 @@ export default async function og({ params }: { params: { postId: string } }) {
     ).then((res) => res.arrayBuffer());
   const { postId } = params;
   const { poste } = await getPoste(postId);
-  const postTitle = poste?.title || "الاتحاد الوطني لطلبة موريتانيا";
 
   return new ImageResponse(
     (
@@ -49,7 +48,7 @@ export default async function og({ params }: { params: { postId: string } }) {
           whiteSpace: "pre-wrap",
         }}
       >
-        {postTitle}
+   {poste?.title || "الاتحاد الوطني لطلبة موريتانيا"}
       </div>
     </div>
     ),
