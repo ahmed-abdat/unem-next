@@ -35,8 +35,8 @@ export default function Template({ children }: { children: React.ReactNode }) {
         transition={{
           type: "spring",
           stiffness: 100,
-          damping: 18,
-          duration: 0.5,
+          damping: 20,
+          duration: 0.4,
           delay: 0.1,
         }}
       >

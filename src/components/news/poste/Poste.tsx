@@ -23,6 +23,12 @@ function Poste({ poste , id } : { poste: DocumentData | null , id: string}) {
 
   useEffect(() => {
     setIsClient(true);
+    // scroll to top
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
   },[]);
 
 
