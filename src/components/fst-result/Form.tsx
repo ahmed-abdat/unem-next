@@ -51,6 +51,9 @@ export default function Form() {
     setStudentId(data.matriculeNumber);
     setLoading(true);
     setSelectedSemester("");
+    setSemesterOptions(null);
+    setStudentMarks(null);
+    setMoyenGenerale(null);
     setIsNotFound(false);
     const res = await getAvailableOptions(data.matriculeNumber);
     console.log(res);
