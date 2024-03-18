@@ -12,7 +12,7 @@ export default function StudentInfo({
   return (
     <header className='flex flex-col items-center mb-4 gap-4 w-full h-full md:max-w-[60%] mx-auto'>
         <h2 className="text-xl font-semibold font-rb text-gray-800">
-          الإسم: {name}
+        الاسم واللقب : {name}
         </h2>
         <h2 className="text-xl font-semibold font-rb text-gray-800">
           السنة {studentanner} ليصانص

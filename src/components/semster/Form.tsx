@@ -10,8 +10,12 @@ import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 import DialogResulta from "@/components/calculat-moyen/DialogResulta";
-import { Tabel } from "./Tabel";
+import { Tabel } from "../fst-result/Tabel";
 import SelectedSemester from "@/components/semster/Select";
+import {
+  SemesterOption,
+  semesterOptions,
+} from "@/constats/resulta/semester-options";
 import {
   calculateGeneralAverage,
   Student,
@@ -89,7 +93,7 @@ export default function Form() {
                   "bg-white font-rubik font-medium text-[1.35rem] placeholder:text-[1.1rem]  placeholder:font-rb py-5 placeholder-gray-400"
                 )}
               />
-              <SelectedSemester setOption={setSelectedSemester} option={"s1"} />
+              <SelectedSemester setOption={setSelectedSemester} option={"s1"} semesterOptions={semesterOptions} />
             </div>
             {errors.matriculeNumber?.message && (
               <p className="text-red-500 text-sm font-rb mt-4">

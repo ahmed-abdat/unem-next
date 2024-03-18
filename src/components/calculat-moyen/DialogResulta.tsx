@@ -17,10 +17,12 @@ import {
   }: {
     isOpen: boolean;
     setIsOpen: (value: boolean) => void;
-    moyenGenerale: number | null;
+    moyenGenerale: string | null;
     congrateText?: string;
     subText?: string;
   }) {
+
+    const parstMoyenGenerale = parseFloat(moyenGenerale || "0");
 
 
     
@@ -30,7 +32,7 @@ import {
         <DialogContent
           className={cn(
             {
-              "bg-green-300": moyenGenerale && moyenGenerale >= 10,
+              "bg-green-300": moyenGenerale && parstMoyenGenerale >= 10,
             },
             "max-w-[95%] sm:max-w-[65%] md:max-w-[50%] lg:max-w-[40%] rounded-lg"
           )}
@@ -40,14 +42,14 @@ import {
               <h2
                 className={cn(
                   {
-                    "text-green-800 flex items-center justify-center": moyenGenerale && moyenGenerale > 10,
-                    "text-gray-600": moyenGenerale && moyenGenerale < 10,
+                    "text-green-800 flex items-center justify-center": moyenGenerale && parstMoyenGenerale > 10,
+                    "text-gray-600": moyenGenerale && parstMoyenGenerale < 10,
                   },
                   "font-tajawal font-semibold text-xl text-center"
                 )}
               >
                 {
-                  moyenGenerale && moyenGenerale <= 10 ? <span> {subText || 'معدلك التوجيهي هو'} </span>  :  moyenGenerale && moyenGenerale > 10 && <>
+                  moyenGenerale && parstMoyenGenerale <= 10 ? <span> {subText || 'معدلك التوجيهي هو'} </span>  :  moyenGenerale && parstMoyenGenerale > 10 && <>
                   <span> {congrateText || 'مبروك معدلك التوجيهي هو'}</span>
                   
                   </>
@@ -59,8 +61,8 @@ import {
               <h3
                 className={cn(
                   {
-                    "text-green-800": moyenGenerale && moyenGenerale >= 10,
-                    "text-gray-600": moyenGenerale && moyenGenerale < 10,
+                    "text-green-800": moyenGenerale && parstMoyenGenerale >= 10,
+                    "text-gray-600": moyenGenerale && parstMoyenGenerale < 10,
                     'text-9xl' : moyenGenerale && String(moyenGenerale).length === 2,
                     'text-8xl' : moyenGenerale && String(moyenGenerale).length >= 3,
                   },
@@ -78,7 +80,7 @@ import {
             <Button
               className={cn(
                 {
-                  "bg-green-800": moyenGenerale && moyenGenerale >= 10,
+                  "bg-green-800": moyenGenerale && parstMoyenGenerale >= 10,
                 },
                 "w-full font-tajawal py-6 font-medium text-lg"
               )}

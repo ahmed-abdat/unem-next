@@ -1,3 +1,4 @@
+
 export type Student = {
     dec: string ;
     moy: number ;
@@ -9,6 +10,12 @@ export type Student = {
     coef: number ;
     dep: string;
 };
+
+export type StudentInfo = {
+    "Profil d'orientation": string;
+    Name: string;
+    Profil: string;
+}
 
 export const calculateGeneralAverage = (student : Student[] ) => {
     let totalWeightedMarks  = 0;

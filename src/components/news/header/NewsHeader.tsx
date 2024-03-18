@@ -19,7 +19,7 @@ export default function NewsHeader() {
   };
   // sticky z-50 top-0 
   return (
-    <header className="max-h-[60px] h-full flex items-center gap-4 w-full p-4 bg-primary-color text-white justify-between">
+    <header className="max-h-[60px] sticky z-50 top-0 h-full flex items-center gap-4 w-full p-4 bg-primary-color text-white justify-between">
       <Link
         href="/"
         aria-label="logo image"
