@@ -14,7 +14,8 @@ import {
   getDoc,
 } from "firebase/firestore/lite";
 import { Matiere , ModulesInfo , Module} from '@/types/fst-marks'
-import puppeteer from "puppeteer";
+import chromium from "@sparticuz/chromium-min"
+import puppeteer from "puppeteer-core";
 import * as cheerio from "cheerio";
 import { smesterOptions } from "@/constats/resulta/semester-options";
 
@@ -134,6 +135,20 @@ export const getAllPostes = async (collectionName: string = "postes") => {
 
 // get student note using puppeteer and cheerio
 
+async function getBrowser() {
+  // local development is broken for this 👇
+  // but it works in vercel so I'm not gonna touch it
+  return puppeteer.launch({
+    args: [...chromium.args, '--hide-scrollbars', '--disable-web-security'],
+    defaultViewport: chromium.defaultViewport,
+    executablePath: await chromium.executablePath(
+      `https://github.com/Sparticuz/chromium/releases/download/v116.0.0/chromium-v116.0.0-pack.tar`
+    ),
+    headless: true,
+    ignoreHTTPSErrors: true,
+  });
+}
+
 export const getStudentNote = async (
   id: string,
   semester: string
@@ -144,7 +159,7 @@ export const getStudentNote = async (
 
   let browser;
   try {
-    browser = await puppeteer.launch({ headless: true });
+    browser = await getBrowser();
     const page = await browser.newPage();
     await page.goto(`http://resultats.una.mr/FST/`);
     await page.setViewport({ width: 1080, height: 1024 });
@@ -309,7 +324,7 @@ export const getStudentNote = async (
 export const getAvailableOptions = async (id: string) => {
   let browser;
   try {
-    browser = await puppeteer.launch({ headless: true });
+    browser = await getBrowser();
     const page = await browser.newPage();
     await page.goto(`http://resultats.una.mr/FST/`);
 
