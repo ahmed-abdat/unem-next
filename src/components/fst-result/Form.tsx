@@ -1,6 +1,6 @@
 "use client";
 
-import { TMaticule, matricule } from "@/lib/validations/resulta-validation";
+import { TFstResult,  fstRsult } from "@/lib/validations/resulta-validation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Loader2, Search } from "lucide-react";
@@ -8,7 +8,7 @@ import { Label } from "../ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
-import { useEffect, useMemo, useState } from "react";
+import {  useMemo, useState } from "react";
 import DialogResulta from "@/components/calculat-moyen/DialogResulta";
 import { Tabel } from "./Tabel";
 import SelectedSemester from "@/components/semster/Select";
@@ -43,8 +43,8 @@ export default function Form() {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<TMaticule>({
-    resolver: zodResolver(matricule),
+  } = useForm<TFstResult>({
+    resolver: zodResolver(fstRsult),
   });
 
   //   default value for matricule
@@ -72,7 +72,7 @@ export default function Form() {
     setSelectedSemester("");
   };
 
-  const onSubmit = async (data: TMaticule) => {
+  const onSubmit = async (data: TFstResult) => {
     const { matriculeNumber } = data;
     setLoading(true);
     setIsNotFound(false);
