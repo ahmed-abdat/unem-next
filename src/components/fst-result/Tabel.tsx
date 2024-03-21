@@ -29,10 +29,12 @@ export function Tabel({
 
   const moyenGeneral = modulesInfos.modulesInfo.moyen;
   return (
-    <Table dir="ltr" className="font-roboto pb-8">
+    <Table dir="ltr" className="font-roboto pb-8 w-full">
       <TableHeader className=" w-full ">
-        <TableRow>
-          <TableHead className="p-2 text-center font-bold md:text-base min-w-[120px]">Matiere</TableHead>
+        <TableRow className="text-lg">
+          <TableHead className="p-2 text-center font-bold md:text-base min-w-[120px]">
+            Matiere
+          </TableHead>
           <TableHead className="p-2 text-center max-w-[100px] font-bold md:text-base">
             Credit
           </TableHead>
@@ -51,7 +53,9 @@ export function Tabel({
           <TableHead className="p-2 text-center max-w-[100px] font-bold md:text-base">
             Note Finale
           </TableHead>
-          <TableHead className="p-2 text-center font-bold md:text-base">Observations</TableHead>
+          <TableHead className="p-2 text-center font-bold md:text-base">
+            Observations
+          </TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
@@ -91,23 +95,31 @@ export function Tabel({
               })}
               <TableRow className="bg-gray-200 w-full">
                 {/* show the module name and id */}
-                <TableCell colSpan={1} className="text-center p-0 font-roboto font-semibold">
+                <TableCell
+                  colSpan={1}
+                  className="text-center p-0 font-roboto font-semibold"
+                >
                   Module :
                 </TableCell>
                 <TableCell className="text-center p-2 font-bold flex items-center gap-x-4 min-w-[145px]">
                   {module.id}
                   <span>{module.name}</span>
                 </TableCell>
-                <TableCell className=" text-center p-2 font-bold">
-                </TableCell>
+                <TableCell className=" text-center p-2 font-bold"></TableCell>
 
-                <TableCell colSpan={2} className="text-center p-0 font-roboto font-semibold">
+                <TableCell
+                  colSpan={2}
+                  className="text-center p-0 font-roboto font-semibold"
+                >
                   Moyenne du module
                 </TableCell>
                 <TableCell className="text-center p-2 font-bold">
                   {module.moyenModule}
                 </TableCell>
-                <TableCell colSpan={2} className="text-center p-0 font-roboto font-semibold">
+                <TableCell
+                  colSpan={2}
+                  className="text-center p-0 font-roboto font-semibold"
+                >
                   Decision Module
                 </TableCell>
                 <TableCell className="text-center p-2 font-bold">
@@ -120,20 +132,29 @@ export function Tabel({
       </TableBody>
       <TableFooter className="bg-gray-100 ">
         <TableRow>
-          <TableCell colSpan={2} className="text-center p-0 font-roboto font-semibold text-base">
+          <TableCell
+            colSpan={2}
+            className="text-center p-0 font-roboto font-semibold text-base"
+          >
             Moyenne du semestre
           </TableCell>
           <TableCell className=" className='text-center  'text-center p-2 font-bold">
             {moyenGeneral}
           </TableCell>
 
-          <TableCell colSpan={2} className="text-center p-0 font-roboto font-semibold text-base">
+          <TableCell
+            colSpan={2}
+            className="text-center p-0 font-roboto font-semibold text-base"
+          >
             Total crédit validé
           </TableCell>
           <TableCell className="text-center p-2 font-bold">
             {modulesInfos.modulesInfo.totalCredit}
           </TableCell>
-          <TableCell colSpan={2} className="text-center p-0 font-roboto font-semibold text-base">
+          <TableCell
+            colSpan={2}
+            className="text-center p-0 font-roboto font-semibold text-base"
+          >
             Decision Semetre
           </TableCell>
           <TableCell className=" className='text-center  'text-center p-2 font-bold">
@@ -143,8 +164,8 @@ export function Tabel({
       </TableFooter>
       <TableCaption className="mb-8 font-aljazira font-semibold text-base">
         {parseFloat(moyenGeneral) >= 10
-          ? "يهنئك الإتحاد الوطني على الإجتياز"
-          : "يتمنى لك الإتحاد الوطني التوفيق في الاستدراك"}
+          ? "يهنئك الإتحاد الوطني على النجاح والتفوق"
+          : "يتمنى لك الإتحاد الوطني التوفيق في القادم"}
       </TableCaption>
     </Table>
   );

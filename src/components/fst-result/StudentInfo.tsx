@@ -1,18 +1,20 @@
-export default function StudentInfo({
-  name,
-  department,
+import { StudentInfo } from "@/types/fst-marks";
+
+export default function StudentInfos({
+  studentInfos
 }: {
-  name: string;
-  department: string;
+  studentInfos : StudentInfo
 }) {
+  const { Name , Profil} = studentInfos
+  const profile = Profil ? Profil : studentInfos["Profil d'orientation"]; 
   return (
-    <header className="flex flex-col items-center mb-4 gap-4 w-full h-full md:max-w-[60%] mx-auto text-center">
+    <>
       <h2 className="text-xl font-semibold text-gray-800 font-tajawal">
-        <span className="text-primary-color ml-2 font-aljazira">الاسم واللقب</span> {name}
+        <span className="text-primary-color ml-2 font-aljazira">الاسم واللقب</span> {Name}
       </h2>
       <h2 className="text-xl font-semibold font-rb text-gray-800">
-        <span className="text-primary-color ml-2 font-aljazira">الشعبة</span>  {department}
+        <span className="text-primary-color ml-2 font-aljazira">الشعبة</span>  {profile}
       </h2>
-    </header>
+    </>
   );
 }

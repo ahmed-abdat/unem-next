@@ -23,9 +23,6 @@ import {
   }) {
 
     const parstMoyenGenerale = parseFloat(moyenGenerale || "0");
-
-
-    
     return (
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         {/* <DialogTrigger>Open</DialogTrigger> */}
@@ -49,7 +46,7 @@ import {
                 )}
               >
                 {
-                  moyenGenerale && parstMoyenGenerale <= 10 ? <span> {subText || 'معدلك التوجيهي هو'} </span>  :  moyenGenerale && parstMoyenGenerale > 10 && <>
+                  moyenGenerale && parstMoyenGenerale < 10 ? <span> {subText || 'معدلك التوجيهي هو'} </span>  :  moyenGenerale && parstMoyenGenerale >= 10 && <>
                   <span> {congrateText || 'مبروك معدلك التوجيهي هو'}</span>
                   
                   </>
@@ -57,8 +54,10 @@ import {
         
               </h2>
               <div className="flex items-center justify-center gap-x-2">
+              <div className="flex">
               <Image src="/conngrat.gif" width={85} height={100} className='flex items-center justify-center object-cover transform rotate-[270deg] h-[100px] w-[85px] ' alt="congratilation"/>
-              <h3
+              </div>
+              <p
                 className={cn(
                   {
                     "text-green-800": moyenGenerale && parstMoyenGenerale >= 10,
@@ -70,8 +69,10 @@ import {
                 )}
               >
                 {moyenGenerale}
-              </h3>
+              </p>
+              <div className="flex">
               <Image src="/conngrat.gif" width={85} height={100} className='flex items-center justify-center object-cover transform rotate-[0deg] h-[100px] w-[85px] ' alt="congratilation"/>
+              </div>
               </div>
   
             </DialogDescription>

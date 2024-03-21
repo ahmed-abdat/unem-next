@@ -18,7 +18,7 @@ import DialogResulta from "@/components/calculat-moyen/DialogResulta";
 
 export default function Form({ option }: { option: string }) {
   const [loading, setLoading] = useState(false);
-  const [moyenGenerale, setMoyenGenerale] = useState<number | null>(null);
+  const [moyenGenerale, setMoyenGenerale] = useState<string | null>(null);
   const [isOpen, setIsOpen] = useState(false);
 
 
@@ -42,7 +42,7 @@ export default function Form({ option }: { option: string }) {
         ThirdeMatiere,
         MoyenGenerale
         );
-        setMoyenGenerale(moyenGenerale);
+        setMoyenGenerale(moyenGenerale.toString());
         setLoading(false);
         setIsOpen(true);
       }, 200);

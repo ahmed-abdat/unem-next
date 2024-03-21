@@ -10,7 +10,7 @@ import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 import DialogResulta from "@/components/calculat-moyen/DialogResulta";
-import { Tabel } from "../fst-result/Tabel";
+import { Tabel } from "@/components/semster/Tabel";
 import SelectedSemester from "@/components/semster/Select";
 import {
   SemesterOption,
@@ -118,7 +118,7 @@ export default function Form() {
           <DialogResulta
             isOpen={isOpen}
             setIsOpen={setIsOpen}
-            moyenGenerale={moyenGenerale}
+            moyenGenerale={moyenGenerale ? moyenGenerale.toString() : null}
             congrateText="يهنئك الإتحاد الوطني على الإجتياز"
             subText="يتمنى لك الإتحاد الوطني التوفيق في الاستدراك"
           />

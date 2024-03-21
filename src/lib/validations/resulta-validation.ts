@@ -2,7 +2,7 @@ import {z} from 'zod'
 
 export const matricule = z.object({
     matriculeNumber: z.string().min(4, {
-        message: 'الرجاء إدخال رقم تسجيل صحيح'
+        message: "Numéro d'inscription ou nom doit contenir au moins 4 caractères"
     })
 })
 

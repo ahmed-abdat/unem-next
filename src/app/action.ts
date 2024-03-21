@@ -12,14 +12,16 @@ import {
   startAfter,
   doc,
   getDoc,
+  setDoc,
+  where,
 } from "firebase/firestore/lite";
-import { Matiere , ModulesInfo , Module} from '@/types/fst-marks'
-import chromium from "@sparticuz/chromium-min"
-import puppeteer from "puppeteer-core";
-import * as cheerio from "cheerio";
-import { smesterOptions } from "@/constats/resulta/semester-options";
+// import puppeteer, { Page } from "puppeteer";
+// import * as cheerio from "cheerio";
+import { Matiere, ModulesInfo, Module, StudentMarks, Smesters } from "@/types/fst-marks";
+// import { smesterOptions } from "@/constats/resulta/semester-options";
 
 const firestore = getFirestore(app);
+const FST_URL = "http://resultats.una.mr/FST/";
 
 export const getPoste = async (
   id: string | null,
@@ -119,6 +121,7 @@ export const fetchMorePostes = async ({
 };
 
 // get all postes
+
 export const getAllPostes = async (collectionName: string = "postes") => {
   const q = query(
     collection(firestore, collectionName),
@@ -133,277 +136,331 @@ export const getAllPostes = async (collectionName: string = "postes") => {
   return postes;
 };
 
-// get student note using puppeteer and cheerio
+  // get student note using puppeteer and cheerio
+  
+  // const paresStudentNote = (html: string) => {
+  //   const $ = cheerio.load(html);
+  
+  //   const modules: Module[] = [];
+  
+  //   const modulesInfo: ModulesInfo = {
+  //     moyen: "",
+  //     decision: "",
+  //     totalCredit: "",
+  //   };
+  
+  //   let modulesinfos: string[] = [];
+  
+  //   $('td[id="ecriture:j_id171:j_id235"]')
+  //     .find("span.couleurTetx1")
+  //     .each((index, element) => {
+  //       modulesinfos.push($(element).text().trim());
+  //     });
+  //   // combien the firest two element to get the moyen
+  //   modulesInfo.moyen = `${modulesinfos[0]}${modulesinfos[1]}`;
+  //   modulesInfo.totalCredit = `${modulesinfos[2]}/${modulesinfos[3]}`;
+  //   modulesInfo.decision = modulesinfos[4];
+  
+  //   $('tbody[id="ecriture:j_id171:tb"]').each((index, element) => {
+  //     const module: Module = {
+  //       name: "",
+  //       id: "",
+  //       moyenModule: "0",
+  //       decisionModule: "",
+  //       matieres: [],
+  //     };
+  
+  //     let isFisteNote = false;
+  
+  //     $(element)
+  //       .find("tr")
+  //       .each((index, trElement) => {
+  //         const moduleInfo = $(trElement).find("td span.couleurTetx");
+  //         const modulesId = $(trElement).find("td span.couleurTetx1");
+  
+  //         let matiers = [];
+  
+  //         module.id = $(moduleInfo[1]).text().trim();
+  //         module.name = $(modulesId[0]).text().trim();
+  //         module.moyenModule = $(modulesId[1]).text().trim();
+  //         module.decisionModule = $(modulesId[2]).text().trim();
+  
+  //         const matiere1: Matiere = {
+  //           name: $(modulesId[3]).text().trim(),
+  //           credit: parseFloat($(modulesId[4]).text().trim().replace(",", ".")),
+  //           noteTP: parseFloat($(modulesId[5]).text().trim().replace(",", ".")),
+  //           noteCC: parseFloat($(modulesId[6]).text().trim().replace(",", ".")),
+  //           noteCCFinal: parseFloat(
+  //             $(modulesId[7]).text().trim().replace(",", ".")
+  //           ),
+  //           noteRattrapage: parseFloat(
+  //             $(modulesId[8]).text().trim().replace(",", ".")
+  //           ),
+  //           noteFinal: parseFloat(
+  //             $(modulesId[9]).text().trim().replace(",", ".")
+  //           ),
+  //           decision: $(modulesId[10]).text().trim(),
+  //         };
+  //         const matiere2: Matiere = {
+  //           name: $(modulesId[11]).text().trim(),
+  //           credit: parseFloat($(modulesId[12]).text().trim().replace(",", ".")),
+  //           noteTP: parseFloat($(modulesId[13]).text().trim().replace(",", ".")),
+  //           noteCC: parseFloat($(modulesId[14]).text().trim().replace(",", ".")),
+  //           noteCCFinal: parseFloat(
+  //             $(modulesId[15]).text().trim().replace(",", ".")
+  //           ),
+  //           noteRattrapage: parseFloat(
+  //             $(modulesId[16]).text().trim().replace(",", ".")
+  //           ),
+  //           noteFinal: parseFloat(
+  //             $(modulesId[17]).text().trim().replace(",", ".")
+  //           ),
+  //           decision: $(modulesId[18]).text().trim(),
+  //         };
+  //         const matiere3: Matiere = {
+  //           name: $(modulesId[19]).text().trim(),
+  //           credit: parseFloat($(modulesId[20]).text().trim().replace(",", ".")),
+  //           noteTP: parseFloat($(modulesId[21]).text().trim().replace(",", ".")),
+  //           noteCC: parseFloat($(modulesId[22]).text().trim().replace(",", ".")),
+  //           noteCCFinal: parseFloat(
+  //             $(modulesId[23]).text().trim().replace(",", ".")
+  //           ),
+  //           noteRattrapage: parseFloat(
+  //             $(modulesId[24]).text().trim().replace(",", ".")
+  //           ),
+  //           noteFinal: parseFloat(
+  //             $(modulesId[25]).text().trim().replace(",", ".")
+  //           ),
+  //           decision: $(modulesId[26]).text().trim(),
+  //         };
+  
+  //         if (matiere3.decision && matiere2.decision && matiere1.decision) {
+  //           // module.matieres.push(matiere1, matiere2, matiere3);
+  //           matiers.push(matiere1, matiere2, matiere3);
+  //         } else if (matiere2.decision && matiere1.decision) {
+  //           // module.matieres.push(matiere1, matiere2);
+  //           matiers.push(matiere1, matiere2);
+  //         } else if (matiere1.decision) {
+  //           // module.matieres.push(matiere1);
+  //           matiers.push(matiere1);
+  //         }
+  
+  //         if (
+  //           !isFisteNote &&
+  //           module.id &&
+  //           module.decisionModule &&
+  //           module.moyenModule
+  //         ) {
+  //           modules.push({ ...module, matieres: matiers });
+  //           isFisteNote = true;
+  //         } else if (
+  //           isFisteNote &&
+  //           module.id &&
+  //           module.decisionModule &&
+  //           module.moyenModule
+  //         ) {
+  //           isFisteNote = false;
+  //         }
+  //       });
+  //   });
+  //   return {
+  //     modules,
+  //     modulesInfo,
+  //   };
+  // };
+  
+  // export const getStudentNote = async (semester: string[] , page : Page) => {
+  //   console.log("getStudentNote", semester);
+  
+  //   if (!semester) return null;
+  
+  //   try {
+  //     const dropdownSelector = "select[name='ecriture:j_id125']";
+  //     // loop over the semster and get the notes
+  //     let semesters: Smesters = {}; 
+  //     for (let i = 0; i < semester.length; i++) {
+  //       await page.select(dropdownSelector, semester[i].toUpperCase());
+  //       await Promise.all([
+  //         page.keyboard.press("Enter"),
+  //         page.waitForNavigation(),
+  //       ]);
+  //       const html = await page.content();
+  //       const parsedNotes = paresStudentNote(html);
+  //       semesters[semester[i]] = parsedNotes;
+  //     }
+  
+  //     return semesters;
+  //   } catch (error) {
+  //     console.log(error);
+  //     return null;
+  //   }
+  // };
+  
+  
+  // const parseStudentOptionsAndInfo = (html: string , optionValues : string[]) => {
+  //   // Parse HTML using Cheerio
+  //     const $ = cheerio.load(html);
+  //     // Initialize an array to store the text from all elements
+  //     const notesArray: string[] = [];
+  
+  //     // Use Cheerio's each() function to iterate over each element and extract its text
+  //     $("td span.couleurTetx1").each((index, element) => {
+  //       notesArray.push($(element).text().trim());
+  //     });
+  
+  //     if(notesArray[0].startsWith('Etudiant inexistant')){
+  //       return null;
+  //     }
+  //     // Format the result as per the specifications
+  //     const formattedResult = {
+  //       "Profil d'orientation": isNaN(Number(notesArray[1].slice(0, 1)))
+  //       ? notesArray[2].trim() !== '' ? notesArray[2] : notesArray[0]
+  //       : notesArray[1],
+  //       Name: isNaN(Number(notesArray[1].slice(0, 1)))
+  //         ? notesArray[1]
+  //         : notesArray[0],
+  //       Profil: notesArray[2],
+  //     };
+  //     // console.log(notesArray , 'notesArray');
+  
+  //     if (optionValues.length === 0 || !formattedResult.Name) {
+  //       return null;
+  //     }
+  //     return formattedResult;
+  // }
+  
+  // export const getAvailableOptions = async (id: string) => {
+  //   let browser;
+  //   try {
+  //     browser = await puppeteer.launch({ headless: true });
+  //     const page = await browser.newPage();
+  //     await page.goto(FST_URL);
+  
+  //     // Set screen size
+  //     await page.setViewport({ width: 1080, height: 1024 });
+  
+  //     // Clear the input field
+  //     await page.$eval("input[type='text'].rsinputTetx", (el) => (el.value = ""));
+  
+  //     // Enter student ID
+  //     await page.type("input[type='text'].rsinputTetx", id);
+  
+  //     await Promise.all([page.keyboard.press("Enter"), page.waitForNavigation()]);
+  
+  //     // Get the available option values
+  //     const optionValues = await page.evaluate(() => {
+  //       const selectElement = document.querySelector(
+  //         'select[name="ecriture:j_id125"]'
+  //       );
+  //       const options = selectElement?.querySelectorAll("option");
+  //       const values: string[] = [];
+  //       options?.forEach((option) => {
+  //         if (option.value) {
+  //           values.push(option.value.toLowerCase());
+  //         }
+  //       });
+  //       return values;
+  //     });
+  
+  //     // return the corresponding semesterOptions object based on optionValues
+  //     const semesterOptions = smesterOptions.filter((option) =>
+  //       optionValues.includes(option.value)
+  //     );
+  
+  //     const html = await page.content();
+  
+  //     if(optionValues.length === 0) return null;
+  
+  //     const res = await getStudentNote(optionValues , page);
+  
+  //     const formattedResult = parseStudentOptionsAndInfo(html, optionValues);
+  //     if(!formattedResult) return null;
+      
+  
+  //     return {
+  //       semesterOptions,
+  //       studentInfo: formattedResult,
+  //       semesters: res,
+  //     };
+  //   } catch (error) {
+  //     console.log(error);
+  //     return null;
+  //   } finally {
+  //     if (browser) {
+  //       await browser.close();
+  //     }
+  //   }
+  // };
 
-async function getBrowser() {
-  // local development is broken for this 👇
-  // but it works in vercel so I'm not gonna touch it
-  return puppeteer.launch({
-    args: [...chromium.args, '--hide-scrollbars', '--disable-web-security'],
-    defaultViewport: chromium.defaultViewport,
-    executablePath: await chromium.executablePath(
-      `https://github.com/Sparticuz/chromium/releases/download/v116.0.0/chromium-v116.0.0-pack.tar`
-    ),
-    headless: true,
-    ignoreHTTPSErrors: true,
-  });
-}
 
-export const getStudentNote = async (
+const STUDENT_NOTE_FST = "student-note-fst";
+
+// store the student notes in firestore
+export const storeStudentNotes = async (
   id: string,
-  semester: string
+  studentInfo: StudentMarks
 ) => {
-  console.log("getStudentNote", id, semester);
-
-  if (!id || !semester) return null;
-
-  let browser;
+  // add the doc id as the student id
+  const docRef = doc(firestore, STUDENT_NOTE_FST, id);
   try {
-    browser = await getBrowser();
-    const page = await browser.newPage();
-    await page.goto(`http://resultats.una.mr/FST/`);
-    await page.setViewport({ width: 1080, height: 1024 });
-    await page.$eval("input[type='text'].rsinputTetx", (el) => (el.value = ""));
-    await page.type("input[type='text'].rsinputTetx", id);
-    await Promise.all([page.keyboard.press("Enter"), page.waitForNavigation()]);
-    const dropdownSelector = "select[name='ecriture:j_id125']";
-    await page.waitForSelector(dropdownSelector);
-    await page.select(dropdownSelector, semester);
-    await page.waitForNavigation();
-    const html: string = await page.content();
-    const $ = cheerio.load(html);
-
-    const modules: Module[] = [];
-
-    const modulesInfo: ModulesInfo = {
-      moyen : "",
-      decision : "",
-      totalCredit : ''
-    }
-
-    let modulesinfos : string[] = []
-
-     $('td[id="ecriture:j_id171:j_id235"]').find('span.couleurTetx1').each((index, element) => {
-       modulesinfos.push($(element).text().trim());
-      });
-      // combien the firest two element to get the moyen 
-      modulesInfo.moyen = `${modulesinfos[0]}${modulesinfos[1]}`;
-      modulesInfo.totalCredit = `${modulesinfos[2]}/${modulesinfos[3]}`;
-      modulesInfo.decision = modulesinfos[4];
-
-    $('tbody[id="ecriture:j_id171:tb"]').each((index, element) => {
-      const module: Module = {
-        name: "",
-        id: "",
-        moyenModule: "0",
-        decisionModule: "",
-        matieres: [],
-      };
-
-      let isFisteNote = false;
-
-      $(element)
-        .find("tr")
-        .each((index, trElement) => {
-          const moduleInfo = $(trElement).find("td span.couleurTetx");
-          const modulesId = $(trElement).find("td span.couleurTetx1");
-
-          let matiers = [];
-
-          module.id = $(moduleInfo[1]).text().trim();
-          module.name = $(modulesId[0]).text().trim();
-          module.moyenModule = $(modulesId[1]).text().trim();
-          module.decisionModule = $(modulesId[2]).text().trim();
-
-          const matiere1: Matiere = {
-            name: $(modulesId[3]).text().trim(),
-            credit: parseFloat($(modulesId[4]).text().trim().replace(",", ".")),
-            noteTP: parseFloat($(modulesId[5]).text().trim().replace(",", ".")),
-            noteCC: parseFloat($(modulesId[6]).text().trim().replace(",", ".")),
-            noteCCFinal: parseFloat(
-              $(modulesId[7]).text().trim().replace(",", ".")
-            ),
-            noteRattrapage: parseFloat(
-              $(modulesId[8]).text().trim().replace(",", ".")
-            ),
-            noteFinal: parseFloat(
-              $(modulesId[9]).text().trim().replace(",", ".")
-            ),
-            decision: $(modulesId[10]).text().trim(),
-          };
-          const matiere2: Matiere = {
-            name: $(modulesId[11]).text().trim(),
-            credit: parseFloat(
-              $(modulesId[12]).text().trim().replace(",", ".")
-            ),
-            noteTP: parseFloat(
-              $(modulesId[13]).text().trim().replace(",", ".")
-            ),
-            noteCC: parseFloat(
-              $(modulesId[14]).text().trim().replace(",", ".")
-            ),
-            noteCCFinal: parseFloat(
-              $(modulesId[15]).text().trim().replace(",", ".")
-            ),
-            noteRattrapage: parseFloat(
-              $(modulesId[16]).text().trim().replace(",", ".")
-            ),
-            noteFinal: parseFloat(
-              $(modulesId[17]).text().trim().replace(",", ".")
-            ),
-            decision: $(modulesId[18]).text().trim(),
-          };
-          const matiere3: Matiere = {
-            name: $(modulesId[19]).text().trim(),
-            credit: parseFloat(
-              $(modulesId[20]).text().trim().replace(",", ".")
-            ),
-            noteTP: parseFloat(
-              $(modulesId[21]).text().trim().replace(",", ".")
-            ),
-            noteCC: parseFloat(
-              $(modulesId[22]).text().trim().replace(",", ".")
-            ),
-            noteCCFinal: parseFloat(
-              $(modulesId[23]).text().trim().replace(",", ".")
-            ),
-            noteRattrapage: parseFloat(
-              $(modulesId[24]).text().trim().replace(",", ".")
-            ),
-            noteFinal: parseFloat(
-              $(modulesId[25]).text().trim().replace(",", ".")
-            ),
-            decision: $(modulesId[26]).text().trim(),
-          };
-
-          if (matiere3.decision && matiere2.decision && matiere1.decision) {
-            // module.matieres.push(matiere1, matiere2, matiere3);
-            matiers.push(matiere1, matiere2, matiere3);
-          } else if (matiere2.decision && matiere1.decision) {
-            // module.matieres.push(matiere1, matiere2);
-            matiers.push(matiere1, matiere2);
-          } else if (matiere1.decision) {
-            // module.matieres.push(matiere1);
-            matiers.push(matiere1);
-          }
-
-          if (
-            !isFisteNote &&
-            module.id.startsWith("C") &&
-            module.decisionModule &&
-            module.moyenModule
-          ) {
-            isFisteNote = true;
-
-            modules.push({ ...module, matieres: matiers });
-          } else if (
-            isFisteNote &&
-            module.id.startsWith("C") &&
-            module.decisionModule &&
-            module.moyenModule
-          ) {
-            isFisteNote = false;
-          }
-        });
-    });
-
-    return {
-      modules,
-      modulesInfo
-    };
+    await setDoc(docRef, studentInfo);
   } catch (error) {
     console.log(error);
-    return null;
-  } finally {
-    if (browser) {
-      await browser.close();
-    }
   }
 };
 
-export const getAvailableOptions = async (id: string) => {
-  let browser;
+// check if the studet exist in the firestore
+export const checkIfStudentExist = async (id: string) => {
+  const docRef = doc(firestore, STUDENT_NOTE_FST, id);
   try {
-    browser = await getBrowser();
-    const page = await browser.newPage();
-    await page.goto(`http://resultats.una.mr/FST/`);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      return true;
+    } else {
+      return false;
+    }
+  } catch (error) {
+    console.log(error);
+    return false;
+  }
+};
 
-    // Set screen size
-    await page.setViewport({ width: 1080, height: 1024 });
 
-    // Clear the input field
-    await page.$eval("input[type='text'].rsinputTetx", (el) => (el.value = ""));
-
-    // Enter student ID
-    await page.type("input[type='text'].rsinputTetx", id);
-
-    await Promise.all([page.keyboard.press("Enter"), page.waitForNavigation()]);
-
-    // Get the available option values
-    const optionValues = await page.evaluate(() => {
-      const selectElement = document.querySelector(
-        'select[name="ecriture:j_id125"]'
-      );
-      const options = selectElement?.querySelectorAll("option");
-      const values: string[] = [];
-      options?.forEach((option) => {
-        if (option.value) {
-          values.push(option.value.toLowerCase());
-        }
-      });
-      return values;
-    });
-
-    // return the corresponding semesterOptions object based on optionValues
-    const semesterOptions = smesterOptions.filter((option) =>
-      optionValues.includes(option.value)
-    );
-
-    const html = await page.content();
-
-    // Parse HTML using Cheerio
-    const $ = cheerio.load(html);
-    // Initialize an array to store the text from all elements
-    const notesArray: string[] = [];
-
-    
-
-    // Use Cheerio's each() function to iterate over each element and extract its text
-    $("td span.couleurTetx1").each((index, element) => {
-      notesArray.push($(element).text().trim());
-    });
-    // Format the result as per the specifications
-    const formattedResult = {
-      "Profil d'orientation": notesArray[0],
-      Name: notesArray[1],
-      Profil: notesArray[2],
-    };
-
-    // console.log(notesArray , 'notesArray');
-    
-
-    if (optionValues.length === 0 || !formattedResult.Name) {
+// get the student information from firestore
+export const getStudentInformation = async (id: string) => {
+  const docRef = doc(firestore, STUDENT_NOTE_FST, id);
+  try {
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      const data = { ...docSnap.data() } as StudentMarks;
+      return data;
+    } else {
+      console.log("No such document!");
       return null;
     }
-
-    // const res = await getStudentNote(id, optionValues[0].toUpperCase());
-    // make it with promise all
-    // const promises = optionValues.map((semester) => getStudentNote(id, semester.toUpperCase()));
-    // res = await Promise.all(promises);
-
-    // console.log(res , 'res');
-
-    return {
-      semesterOptions,
-      studentInfo: formattedResult,
-      // studentNotes : res
-    };
   } catch (error) {
     console.log(error);
     return null;
-  } finally {
-    if (browser) {
-      await browser.close();
-    }
   }
 };
+
+// seach by name 
+export const searchStudentByName = async (name: string) => {
+  const q = query(
+    collection(firestore, STUDENT_NOTE_FST),
+    where("studentInfo.Name", ">=", name), 
+    limit(10),
+    orderBy("studentInfo.Name")
+  );
+  const snapshot = await getDocs(q);
+  console.log(snapshot.docs.length , 'snapshot.docs.length');
+  
+  let students: StudentMarks[] = [];
+  snapshot.forEach((doc) => {
+    const postData = doc.data() as StudentMarks;
+    if (postData.studentInfo.Name.includes(name)) {
+      students.push({ ...postData });
+    }
+  });
+  return students;
+}
