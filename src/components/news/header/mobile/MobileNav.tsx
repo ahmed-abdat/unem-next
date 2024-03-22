@@ -11,7 +11,8 @@ import { newsMenuLinks } from "@/constats/news/menu-nav-links-institions";
 import MobileNavUser from "./MobileNavUser";
 import NavButton from "../NavButton";
 import { MobileMenu } from "./MobileMenu";
-import {Separator} from '@/components/ui/separator'
+import { Separator } from "@/components/ui/separator";
+import { ResultaLink } from "@/constats/news/resulta";
 
 const MobileNav = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -53,10 +54,10 @@ const MobileNav = () => {
       </button>
     );
 
-    const aboutLink =    {
-      title: "من نحن",
-      href: "/about",
-    }
+  const aboutLink = {
+    title: "من نحن",
+    href: "/about",
+  };
 
   return (
     <>
@@ -87,23 +88,32 @@ const MobileNav = () => {
                     className="w-full flex items-center justify-center"
                     key={navLink.title}
                   >
-                    <NavButton navLink={navLink} className="w-[90%] text-black transition-all duration-75" />
+                    <NavButton
+                      navLink={navLink}
+                      className="w-[90%] text-black transition-all duration-75"
+                    />
                   </li>
                 ))}
               </ul>
-              <Separator className='my-2 w-[90%] mx-auto' />
+              <Separator className="my-2 w-[90%] mx-auto" />
               <div className="flex items-center justify-center w-full">
-              <MobileMenu navMenu={MenuLinks} >
-                الشؤون الأكاديمية
-              </MobileMenu>
+                <MobileMenu navMenu={MenuLinks}>الشؤون الأكاديمية</MobileMenu>
               </div>
               <div className="flex items-center justify-center w-full mb-4">
-              <MobileMenu navMenu={newsMenuLinks} mainRoute="institutions">
-                مؤسسات التعليم العالي
-              </MobileMenu>
+                <MobileMenu navMenu={newsMenuLinks} mainRoute="institutions">
+                  مؤسسات التعليم العالي
+                </MobileMenu>
+              </div>
+              <div className="flex items-center justify-center w-full mb-4">
+              <MobileMenu navMenu={ResultaLink}>
+                  نتائج الامتحانات
+                </MobileMenu>
               </div>
               <div className="flex items-center justify-center w-full my-4">
-              <NavButton navLink={aboutLink} className="w-[90%] text-black transition-all duration-75" />
+                <NavButton
+                  navLink={aboutLink}
+                  className="w-[90%] text-black transition-all duration-75"
+                />
               </div>
               <MobileNavUser closeOnCurrent={closeOnCurrent} />
             </div>
