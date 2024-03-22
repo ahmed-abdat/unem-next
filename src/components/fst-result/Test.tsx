@@ -40,8 +40,8 @@ export default function Form() {
     // );
     // if(!res) return null
     // setStudentInfo(res);
-    setLoading(false);
-    return null;
+    // setLoading(false);
+    // return null;
   };
 
   let isFirstTime = true;
@@ -66,49 +66,49 @@ export default function Form() {
   //   };
   // };
   
-  // const storeStudentInformation = async (id: string, studentInformation: any) => {
-  //   console.log('fetching ...');
-  //   await storeStudentNotes(id, studentInformation);
-  // };
+  const storeStudentInformation = async (id: string, studentInformation: any) => {
+    console.log('fetching ...');
+    // await storeStudentNotes(id, studentInformation);
+  };
   
   const onSubmit = async (data: TMaticule) => {
     let matriculeStart = parseInt(data.matriculeNumber.slice(1));
     let studentCount = 0;
     const limit = 1500;
   
-    // try {
-    //   while (studentCount < limit) {
-    //     setLoading(true);
-    //     setIsNotFound(false);
-    //     const id = 'C' + matriculeStart.toString()
-    //     console.log('Checking student:', id , studentCount , `of ${limit}`);
+    try {
+      while (studentCount < limit) {
+        setLoading(true);
+        setIsNotFound(false);
+        const id = 'C' + matriculeStart.toString()
+        console.log('Checking student:', id , studentCount , `of ${limit}`);
   
-    //     const isExist = await checkIfStudentExist(id);
+        // const isExist = await checkIfStudentExist(id);
   
-    //     if (!isExist) {
-    //       const studentInformation = await fetchStudentInformation(id);
-    //       if (!studentInformation) {
-    //         console.log('Student not found or has no options:', id);
-    //         matriculeStart++;
-    //         continue; // Skip to the next student
-    //       }
+        // if (!isExist) {
+        //   const studentInformation = await fetchStudentInformation(id);
+        //   if (!studentInformation) {
+        //     console.log('Student not found or has no options:', id);
+        //     matriculeStart++;
+        //     continue; // Skip to the next student
+        //   }
           
-    //       await storeStudentInformation(id, studentInformation);
-    //       console.log('Student information stored:', studentInformation);
-    //       studentCount++;
-    //     } else {
-    //       console.log('Student exists:', id);
-    //       studentCount++;
-    //     }
+        //   await storeStudentInformation(id, studentInformation);
+        //   console.log('Student information stored:', studentInformation);
+        //   studentCount++;
+        // } else {
+        //   console.log('Student exists:', id);
+        //   studentCount++;
+        // }
   
-    //     matriculeStart++;
-    //   }
-    // } catch (error) {
-    //   console.error('Error while fetching or storing student information:', error);
-    // } finally {
-    //   setLoading(false);
-    //   console.log('Finished fetching and storing student information');
-    // }
+        matriculeStart++;
+      }
+    } catch (error) {
+      console.error('Error while fetching or storing student information:', error);
+    } finally {
+      setLoading(false);
+      console.log('Finished fetching and storing student information');
+    }
   };
   
 

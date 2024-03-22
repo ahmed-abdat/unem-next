@@ -11,14 +11,6 @@ import {
 import { ModulesInformation } from "@/types/fst-marks";
 import React from "react";
 
-const decision = (moy: number) => {
-  if (moy >= 10) {
-    return "استوفى";
-  } else {
-    return "لم يستوفي ";
-  }
-};
-
 export function Tabel({
   modulesInfos,
 }: {
@@ -27,7 +19,11 @@ export function Tabel({
   if (modulesInfos === null || modulesInfos.modules.length === 0)
     return <h1>لا يوجد طالب بهذا الرقم</h1>;
 
+    console.log(modulesInfos.modulesInfo.decision);
+    
+
   const moyenGeneral = modulesInfos.modulesInfo.moyen;
+  const decison = modulesInfos.modulesInfo.decision;
   return (
     <Table dir="ltr" className="font-roboto pb-8 w-full">
       <TableHeader className=" w-full ">
@@ -93,7 +89,7 @@ export function Tabel({
                   </TableRow>
                 );
               })}
-              <TableRow className="bg-gray-200 w-full">
+              <TableRow className="bg-gray-200 hover:bg-gray-200 w-full">
                 {/* show the module name and id */}
                 <TableCell
                   colSpan={1}
@@ -163,7 +159,7 @@ export function Tabel({
         </TableRow>
       </TableFooter>
       <TableCaption className="mb-8 font-aljazira font-semibold text-base">
-        {parseFloat(moyenGeneral) >= 10
+        {parseFloat(moyenGeneral) >= 10 && decison === "V"
           ? "يهنئك الإتحاد الوطني على النجاح والتفوق"
           : "يتمنى لك الإتحاد الوطني التوفيق في القادم"}
       </TableCaption>
