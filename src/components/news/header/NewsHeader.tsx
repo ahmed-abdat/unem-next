@@ -3,6 +3,7 @@ import { NavigationMenue } from "@/components/news/header/NewsMenu";
 import { Button } from "@/components/ui/button";
 import { MenuLinks } from "@/constats/news/menu-nav-links-accademic";
 import { newsMenuLinks } from "@/constats/news/menu-nav-links-institions";
+import {ResultaLink} from '@/constats/news/resulta'
 import { navLinks } from "@/constats/news/nav-links";
 import { CircleUserRound } from "lucide-react";
 // import { tajawal } from "@/app/layout";
@@ -48,6 +49,9 @@ export default function NewsHeader() {
         </NavigationMenue>
         <NavigationMenue navMenu={newsMenuLinks} mainRoute="institutions">
           مؤسسات التعليم العالي
+        </NavigationMenue>
+        <NavigationMenue navMenu={ResultaLink} isAccademic>
+          نتائج الامتحانات
         </NavigationMenue>
         <NavButton
           navLink={aboutLink}

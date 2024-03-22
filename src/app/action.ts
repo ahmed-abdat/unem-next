@@ -452,7 +452,7 @@ export const searchStudentByName = async (name: string) => {
   const q = query(
     collection(firestore, STUDENT_NOTE_FST),
     where("studentInfo.Name", ">=", studentName), 
-    limit(30),
+    limit(20),
     orderBy("studentInfo.Name")
   );
   const snapshot = await getDocs(q);
