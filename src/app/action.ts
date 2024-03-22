@@ -456,8 +456,6 @@ export const searchStudentByName = async (name: string) => {
     orderBy("studentInfo.Name")
   );
   const snapshot = await getDocs(q);
-  console.log(snapshot.docs.length , 'snapshot.docs.length');
-  
   let students: StudentMarks[] = [];
   snapshot.forEach((doc) => {
     const postData = doc.data() as StudentMarks;
