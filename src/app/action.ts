@@ -447,8 +447,6 @@ export const getStudentInformation = async (id: string) => {
 // seach by name 
 export const searchStudentByName = async (name: string) => {
   const studentName = name.slice(0,1).toUpperCase() + name.slice(1);
-  console.log(studentName , 'name');
-  
   const q = query(
     collection(firestore, STUDENT_NOTE_FST),
     where("studentInfo.Name", ">=", studentName), 
