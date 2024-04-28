@@ -17,7 +17,7 @@ export default function Poste({
   }else if (params.slot === "articles") {
     selectedPoste = articles.find((poste) => poste.id == posteId);
   }
-  console.log(selectedPoste);
+  
   if(!selectedPoste) return (<div>404</div>)
   
 
