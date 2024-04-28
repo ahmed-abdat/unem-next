@@ -157,7 +157,7 @@ export const articles : Accademics[] = [
        thumbnail : '/unem-accadeics/postes/1/thumb.jpg',
        images : [
         {
-            url : '/unem-accadeics/postes/1/1.jpg',
+            url : '/unem-accadeics/postes/1/thumb.jpg',
             alt : '1'
         }
        ]
