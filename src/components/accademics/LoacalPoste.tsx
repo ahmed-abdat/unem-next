@@ -81,7 +81,7 @@ function Poste({ poste , id } : { poste: Accademics | null , id: string}) {
             <div className="flex flex-col m-3 py-0 px-4 gap-4 border-r-[5px] border-disabeld-btn md:max-w-[60dvw]">
               <div className="text-[0.85rem] text-muted-foreground flex items-center gap-[0.8rem] ">
                 <span className="font-aljazira ">
-                  {poste?.date}
+                  {poste?.date} بتاريخ :
                 </span>
               </div>
               <SharePoste handelCopy={handelCopy} url={url} />
