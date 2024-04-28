@@ -16,11 +16,15 @@ interface Image {
   title: string;
 }
 
+interface LocalImage {
+  url: string;
+  alt: string;
+}
 export function Carousele({
   images,
   selectedImage,
 }: {
-  images: Image[];
+  images: Image[] | LocalImage[];
   selectedImage?: string | null;
 }) {
   const selctedImageIndex = images.findIndex(
@@ -46,7 +50,7 @@ export function Carousele({
             <div className="w-full h-full relative min-h-[60dvh] overflow-hidden  border-none md:border bg-transparent md:bg-white">
               <Image
                 src={image.url}
-                alt={image.title || 'poste image'}
+                alt={'title' in image ? image.title : 'poste image'}
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 33vw"
                 className="object-center object-cover rounded-md"

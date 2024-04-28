@@ -7,7 +7,7 @@ export default function Thumbnail({
   videoUrl,
 }: {
   imageSrc: string;
-  videoUrl: string;
+  videoUrl?: string;
 }) {
   const [isReady, setIsReady] = useState(false);
   

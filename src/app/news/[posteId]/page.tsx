@@ -27,15 +27,15 @@ export async function generateMetadata({ params} : PosteProps) {
       siteName: 'unem2000',
       images: [
         {
-          url: poste?.thumbnail?.url || poste?.images[0].url, // Dynamic og route
+          url: poste?.thumbnail?.url || poste?.images[0]?.url || '/logo.png', // Dynamic og route
           width: 800,
           height: 600,
         },
         {
-          url: poste?.images[0].url, // Dynamic og route
+          url: poste?.images[0]?.url || '/logo.png', // Dynamic og route
           width: 1800,
           height: 1600,
-          alt: poste?.thumbnail?.name || poste?.images[0].name,
+          alt: poste?.thumbnail?.name || poste?.images[0]?.name || '/logo.png',
         },
       ],
     },
@@ -45,7 +45,7 @@ export async function generateMetadata({ params} : PosteProps) {
       cardType: 'summary_large_image',
       site: '@unem',
       handle: '@unem',
-      images : [poste?.thumbnail?.url || poste?.images[0].url],
+      images : [poste?.thumbnail?.url || poste?.images[0]?.url || '/logo.png'],
     },
   };
 }

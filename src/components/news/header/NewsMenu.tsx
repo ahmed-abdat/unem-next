@@ -40,7 +40,7 @@ export function NavigationMenue({
                   title={navItem.title}
                   href={mainRoute ? `${mainRoute}/${navItem.href}` : navItem.href}
                 >
-                  <p className="text-gray-100 focus:text-white text-sm pt-2 hover:text-gray-100">{navItem.description ? navItem.description : ""}</p>
+                  {/* <p className="text-gray-100 focus:text-white text-sm pt-2 hover:text-gray-100">{navItem.description ? navItem.description : ""}</p> */}
                 </ListItem>
               ))}
             </ul>
