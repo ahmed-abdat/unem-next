@@ -23,6 +23,9 @@ export function NavigationMenue({
   mainRoute?: string;
   isAccademic?: boolean;
 }) {
+
+  
+  
   return (
     <NavigationMenu >
       <NavigationMenuList >
@@ -38,7 +41,7 @@ export function NavigationMenue({
                 className="text-white focus:text-white bg-btn hover:bg-primary-color focus:bg-primary-color hover:text-white transition-all duration-75"
                   key={navItem.title}
                   title={navItem.title}
-                  href={mainRoute ? `${mainRoute}/${navItem.href}` : navItem.href}
+                  href={mainRoute ? `/${mainRoute}/${navItem.href}` : navItem.href}
                 >
                   {/* <p className="text-gray-100 focus:text-white text-sm pt-2 hover:text-gray-100">{navItem.description ? navItem.description : ""}</p> */}
                 </ListItem>
