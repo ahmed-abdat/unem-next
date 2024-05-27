@@ -12,15 +12,14 @@ import { Separator } from "@/components/ui/separator";
 import Thumbnail from "@/components/news/poste/Thumbnail";
 import { Skeleton } from "@/components/ui/skeleton";
 import { usePathname } from "next/navigation";
+import TipTap from "@/components/TipTap";
+import { isValidJSON } from "@/lib/valid-json";
 function Poste({ poste , id } : { poste: DocumentData | null , id: string}) {
   const [isImageSelected, setIsImageSelected] = useState(false);
   const [image, setImage] = useState<string | null>(null);
   const [isClient , setIsClient] = useState(false);
 
-  const path = usePathname();
-  
-
-
+  const path = usePathname(); 
   useEffect(() => {
     setIsClient(true);
     // scroll to top
@@ -63,7 +62,7 @@ function Poste({ poste , id } : { poste: DocumentData | null , id: string}) {
           </Dialoge>
           <section className="pt-6 bg-white min-h-[85dvh] sm:py-[20px] sm:px-4 ">
             <div className=" md:max-w-[60dvw]">
-              <h1 className="font-aljazira font-bold leading-normal text-[1.625rem] md:text-[2rem] lg:text-4xl md:leading-normal pb-2 md:pb-4">
+              <h1 className="font-aljazira font-bold leading-normal text-[1.625rem] md:text-[2rem] lg:text-4xl md:leading-normal pb-2 md:pb-4 text-gray-950">
                 {poste?.title}
               </h1>
             </div>   
@@ -85,7 +84,9 @@ function Poste({ poste , id } : { poste: DocumentData | null , id: string}) {
               <SharePoste handelCopy={handelCopy} url={url} />
             </div>
             <div className="p-3 leading-10 block  text-[19px] text-gray-800 sm:min-w-[60dvw] lg:max-w-[60dvw] md:max-w-[60dvw]">
-              <p className="font-aljazira font-normal">{poste?.discribtion || poste?.summary}</p>
+              {
+                isValidJSON(poste?.discribtion) ? <TipTap description={JSON.parse(poste?.discribtion || '')} /> : <p className="font-aljazira font-normal">{poste?.discribtion || poste?.summary}</p>
+              }
             </div>
             <div className="px-3 mt-4 grid grid-cols-mobile gap-[0.3rem] sm:grid-cols-tablet sm:gap-[0.4rem] lg:grid-cols-desktop w-full h-full">
               {poste?.images.map((image: { url: string; title: string }) => (
