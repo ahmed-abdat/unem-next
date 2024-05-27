@@ -3,7 +3,6 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { tajawal, Aljazira } from "@/app/font/font";
 import { Toaster } from "sonner";
 import "./globals.css";
-import { CSPostHogProvider } from "@/app/PostHugProvider";
 
 export const revalidate = 120;
 
@@ -28,13 +27,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ar" dir="rtl">
-      <CSPostHogProvider>
         <body className={`${Aljazira.className}  ${tajawal.className} bg-main`}>
           {children}
           <Toaster position="top-center" richColors />
           <SpeedInsights />
         </body>
-      </CSPostHogProvider>
     </html>
   );
 }
